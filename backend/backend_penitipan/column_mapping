@@ -1,0 +1,48 @@
+create table login(
+    id INT(15) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username varchar(50) NULL,
+    password varchar(50) NULL,
+    level varchar(40) NULL,
+    created_at datetime NULl,
+    updated_at datetime NULL
+);
+
+create table pegawai(
+    id INT(15) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(50) NULL,
+    jk varchar(50) NULL,
+    alamat varchar(50) NULL,
+    level varchar(50) NULL,
+    status_pegawai varchar(50) NULL -- guru / operator
+);
+
+create table mapel(
+    id int(14) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_pegawai int(14) NULL,
+    kode varchar(45) NULL,
+    mapel varchar(45) NULL,
+    kkm varchar(45) NULL,
+    kurikulum varchar(45) NULL
+);
+
+create table siswa(
+    id int(14) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(45) NULL,
+    nisn varchar(14) NULL,
+    jk varchar(14) NULL,
+    alamat varchar(14) NULL,
+    ttl varchar(50) NULL,
+    kelas varchar(14) NULL,
+    tahun_masuk varchar(14) NULL,
+    nama_ibu varchar(14) NULL,
+    nama_ayah varchar(14) NULL
+);
+
+create table penilaian(
+    id int(14) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_siswa varchar(14) NULL,
+    id_mapel int(35) NULL,
+    nilai varchar(14) NULL,
+    bobot varchar(14) NULL,
+    semester varchar(50) NULL,
+);
