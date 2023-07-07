@@ -1,0 +1,560 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SharedPreferencesPlugin"
+provides-nominal:
+- "29shared_preferences_foundation23SharedPreferencesPluginC"
+provides-member:
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", ""]
+provides-dynamic-lookup:
+- "clear"
+- "getAll"
+- "getAllPrefs"
+- "register"
+- "remove"
+- "setBool"
+- "setDouble"
+- "setValue"
+depends-top-level:
+- !private "&&"
+- !private "=="
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- !private "Bundle"
+- "Double"
+- "FlutterPlugin"
+- "FlutterPluginRegistrar"
+- "NSObject"
+- "Set"
+- "SharedPreferencesPlugin"
+- "String"
+- !private "UserDefaults"
+- "UserDefaultsApi"
+- !private "UserDefaultsApiSetup"
+- !private "getAllPrefs"
+- !private "||"
+depends-member:
+- !private ["SK", ""]
+- !private ["SK", "hasPrefix"]
+- !private ["So8NSBundleC", "bundleIdentifier"]
+- !private ["So8NSBundleC", "main"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "hasPrefix"]
+- !private ["s7CVarArgP", "Bundle"]
+- !private ["s7CVarArgP", "Set"]
+- !private ["s7CVarArgP", "SharedPreferencesPlugin"]
+- !private ["s7CVarArgP", "UserDefaults"]
+- !private ["s7CVarArgP", "UserDefaultsApiSetup"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "bundleIdentifier"]
+- ["s7CVarArgP", "clear"]
+- !private ["s7CVarArgP", "contains"]
+- ["s7CVarArgP", "getAll"]
+- !private ["s7CVarArgP", "getAllPrefs"]
+- ["s7CVarArgP", "handle"]
+- ["s7CVarArgP", "handleMethodCall"]
+- !private ["s7CVarArgP", "hasPrefix"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "main"]
+- !private ["s7CVarArgP", "persistentDomain"]
+- ["s7CVarArgP", "register"]
+- ["s7CVarArgP", "registerWithRegistrar"]
+- ["s7CVarArgP", "remove"]
+- !private ["s7CVarArgP", "removeObject"]
+- !private ["s7CVarArgP", "set"]
+- ["s7CVarArgP", "setBool"]
+- ["s7CVarArgP", "setDouble"]
+- ["s7CVarArgP", "setValue"]
+- !private ["s7CVarArgP", "standard"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["Sl", ""]
+- !private ["Sl", "contains"]
+- !private ["Sl", "hasPrefix"]
+- !private ["Sl", "subscript"]
+- !private ["SL", ""]
+- !private ["SL", "hasPrefix"]
+- !private ["s28CustomDebugStringConvertibleP", "Bundle"]
+- !private ["s28CustomDebugStringConvertibleP", "Set"]
+- !private ["s28CustomDebugStringConvertibleP", "SharedPreferencesPlugin"]
+- !private ["s28CustomDebugStringConvertibleP", "UserDefaults"]
+- !private ["s28CustomDebugStringConvertibleP", "UserDefaultsApiSetup"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "bundleIdentifier"]
+- ["s28CustomDebugStringConvertibleP", "clear"]
+- !private ["s28CustomDebugStringConvertibleP", "contains"]
+- ["s28CustomDebugStringConvertibleP", "getAll"]
+- !private ["s28CustomDebugStringConvertibleP", "getAllPrefs"]
+- ["s28CustomDebugStringConvertibleP", "handle"]
+- ["s28CustomDebugStringConvertibleP", "handleMethodCall"]
+- !private ["s28CustomDebugStringConvertibleP", "hasPrefix"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "main"]
+- !private ["s28CustomDebugStringConvertibleP", "persistentDomain"]
+- ["s28CustomDebugStringConvertibleP", "register"]
+- ["s28CustomDebugStringConvertibleP", "registerWithRegistrar"]
+- ["s28CustomDebugStringConvertibleP", "remove"]
+- !private ["s28CustomDebugStringConvertibleP", "removeObject"]
+- !private ["s28CustomDebugStringConvertibleP", "set"]
+- ["s28CustomDebugStringConvertibleP", "setBool"]
+- ["s28CustomDebugStringConvertibleP", "setDouble"]
+- ["s28CustomDebugStringConvertibleP", "setValue"]
+- !private ["s28CustomDebugStringConvertibleP", "standard"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s17CustomReflectableP", "contains"]
+- !private ["s17CustomReflectableP", "hasPrefix"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "Bundle"]
+- !private ["s23CustomStringConvertibleP", "Set"]
+- !private ["s23CustomStringConvertibleP", "SharedPreferencesPlugin"]
+- !private ["s23CustomStringConvertibleP", "UserDefaults"]
+- !private ["s23CustomStringConvertibleP", "UserDefaultsApiSetup"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "bundleIdentifier"]
+- ["s23CustomStringConvertibleP", "clear"]
+- !private ["s23CustomStringConvertibleP", "contains"]
+- ["s23CustomStringConvertibleP", "getAll"]
+- !private ["s23CustomStringConvertibleP", "getAllPrefs"]
+- ["s23CustomStringConvertibleP", "handle"]
+- ["s23CustomStringConvertibleP", "handleMethodCall"]
+- !private ["s23CustomStringConvertibleP", "hasPrefix"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "main"]
+- !private ["s23CustomStringConvertibleP", "persistentDomain"]
+- ["s23CustomStringConvertibleP", "register"]
+- ["s23CustomStringConvertibleP", "registerWithRegistrar"]
+- ["s23CustomStringConvertibleP", "remove"]
+- !private ["s23CustomStringConvertibleP", "removeObject"]
+- !private ["s23CustomStringConvertibleP", "set"]
+- ["s23CustomStringConvertibleP", "setBool"]
+- ["s23CustomStringConvertibleP", "setDouble"]
+- ["s23CustomStringConvertibleP", "setValue"]
+- !private ["s23CustomStringConvertibleP", "standard"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["Se", "contains"]
+- !private ["Se", "hasPrefix"]
+- !private ["Se", "subscript"]
+- !private ["SD", "subscript"]
+- !private ["SE", "contains"]
+- !private ["SE", "hasPrefix"]
+- !private ["SE", "subscript"]
+- !private ["SQ", "Bundle"]
+- !private ["SQ", "Set"]
+- !private ["SQ", "SharedPreferencesPlugin"]
+- !private ["SQ", "UserDefaults"]
+- !private ["SQ", "UserDefaultsApiSetup"]
+- ["SQ", ""]
+- !private ["SQ", "bundleIdentifier"]
+- ["SQ", "clear"]
+- !private ["SQ", "contains"]
+- ["SQ", "getAll"]
+- !private ["SQ", "getAllPrefs"]
+- ["SQ", "handle"]
+- ["SQ", "handleMethodCall"]
+- !private ["SQ", "hasPrefix"]
+- !private ["SQ", "init"]
+- !private ["SQ", "main"]
+- !private ["SQ", "persistentDomain"]
+- ["SQ", "register"]
+- ["SQ", "registerWithRegistrar"]
+- ["SQ", "remove"]
+- !private ["SQ", "removeObject"]
+- !private ["SQ", "set"]
+- ["SQ", "setBool"]
+- ["SQ", "setDouble"]
+- ["SQ", "setValue"]
+- !private ["SQ", "standard"]
+- !private ["SQ", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "contains"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "Key"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "Value"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "init"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "hasPrefix"]
+- !private ["s23ExpressibleByNilLiteralP", "init"]
+- !private ["s32ExpressibleByStringInterpolationP", ""]
+- !private ["s32ExpressibleByStringInterpolationP", "hasPrefix"]
+- !private ["s26ExpressibleByStringLiteralP", ""]
+- !private ["s26ExpressibleByStringLiteralP", "hasPrefix"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", ""]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "hasPrefix"]
+- !private ["So13FlutterPluginP", "Bundle"]
+- !private ["So13FlutterPluginP", "Set"]
+- !private ["So13FlutterPluginP", "SharedPreferencesPlugin"]
+- !private ["So13FlutterPluginP", "UserDefaults"]
+- !private ["So13FlutterPluginP", "UserDefaultsApiSetup"]
+- ["So13FlutterPluginP", ""]
+- ["So13FlutterPluginP", "clear"]
+- ["So13FlutterPluginP", "deinit"]
+- ["So13FlutterPluginP", "getAll"]
+- ["So13FlutterPluginP", "getAllPrefs"]
+- ["So13FlutterPluginP", "handle"]
+- ["So13FlutterPluginP", "handleMethodCall"]
+- ["So13FlutterPluginP", "init"]
+- ["So13FlutterPluginP", "register"]
+- ["So13FlutterPluginP", "registerWithRegistrar"]
+- ["So13FlutterPluginP", "remove"]
+- ["So13FlutterPluginP", "setBool"]
+- ["So13FlutterPluginP", "setDouble"]
+- ["So13FlutterPluginP", "setValue"]
+- !private ["So22FlutterPluginRegistrarP", "messenger"]
+- !private ["SH", "Bundle"]
+- !private ["SH", "Set"]
+- !private ["SH", "SharedPreferencesPlugin"]
+- !private ["SH", "UserDefaults"]
+- !private ["SH", "UserDefaultsApiSetup"]
+- ["SH", ""]
+- !private ["SH", "bundleIdentifier"]
+- ["SH", "clear"]
+- !private ["SH", "contains"]
+- ["SH", "getAll"]
+- !private ["SH", "getAllPrefs"]
+- ["SH", "handle"]
+- ["SH", "handleMethodCall"]
+- !private ["SH", "hasPrefix"]
+- !private ["SH", "init"]
+- !private ["SH", "main"]
+- !private ["SH", "persistentDomain"]
+- ["SH", "register"]
+- ["SH", "registerWithRegistrar"]
+- ["SH", "remove"]
+- !private ["SH", "removeObject"]
+- !private ["SH", "set"]
+- ["SH", "setBool"]
+- ["SH", "setDouble"]
+- ["SH", "setValue"]
+- !private ["SH", "standard"]
+- !private ["SH", "subscript"]
+- !private ["s25LosslessStringConvertibleP", ""]
+- !private ["s25LosslessStringConvertibleP", "hasPrefix"]
+- !private ["s10MirrorPathP", "hasPrefix"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "hasPrefix"]
+- !private ["So9NSCopyingP", "hasPrefix"]
+- !private ["So21NSItemProviderReadingP", "hasPrefix"]
+- !private ["So21NSItemProviderWritingP", "hasPrefix"]
+- !private ["So16NSMutableCopyingP", "hasPrefix"]
+- ["So8NSObjectC", "Bool"]
+- !private ["So8NSObjectC", "Bundle"]
+- ["So8NSObjectC", "Double"]
+- ["So8NSObjectC", "FlutterPluginRegistrar"]
+- !private ["So8NSObjectC", "Set"]
+- !private ["So8NSObjectC", "SharedPreferencesPlugin"]
+- ["So8NSObjectC", "String"]
+- !private ["So8NSObjectC", "UserDefaults"]
+- !private ["So8NSObjectC", "UserDefaultsApiSetup"]
+- ["So8NSObjectC", ""]
+- !private ["So8NSObjectC", "bundleIdentifier"]
+- ["So8NSObjectC", "clear"]
+- ["So8NSObjectC", "getAll"]
+- ["So8NSObjectC", "getAllPrefs"]
+- ["So8NSObjectC", "handle"]
+- ["So8NSObjectC", "handleMethodCall"]
+- !private ["So8NSObjectC", "hasPrefix"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "main"]
+- !private ["So8NSObjectC", "persistentDomain"]
+- !private ["So8NSObjectC", "persistentDomainForName"]
+- ["So8NSObjectC", "register"]
+- ["So8NSObjectC", "registerWithRegistrar"]
+- ["So8NSObjectC", "remove"]
+- !private ["So8NSObjectC", "removeObject"]
+- !private ["So8NSObjectC", "removeObjectForKey"]
+- !private ["So8NSObjectC", "set"]
+- ["So8NSObjectC", "setBool"]
+- ["So8NSObjectC", "setDouble"]
+- !private ["So8NSObjectC", "setFloat"]
+- !private ["So8NSObjectC", "setInteger"]
+- !private ["So8NSObjectC", "setObject"]
+- !private ["So8NSObjectC", "setURL"]
+- ["So8NSObjectC", "setValue"]
+- !private ["So8NSObjectC", "standard"]
+- ["So8NSObjectP", "Bool"]
+- !private ["So8NSObjectP", "Bundle"]
+- ["So8NSObjectP", "Double"]
+- ["So8NSObjectP", "FlutterPluginRegistrar"]
+- !private ["So8NSObjectP", "Set"]
+- !private ["So8NSObjectP", "SharedPreferencesPlugin"]
+- ["So8NSObjectP", "String"]
+- !private ["So8NSObjectP", "UserDefaults"]
+- !private ["So8NSObjectP", "UserDefaultsApiSetup"]
+- ["So8NSObjectP", ""]
+- !private ["So8NSObjectP", "bundleIdentifier"]
+- ["So8NSObjectP", "clear"]
+- ["So8NSObjectP", "deinit"]
+- ["So8NSObjectP", "getAll"]
+- ["So8NSObjectP", "getAllPrefs"]
+- ["So8NSObjectP", "handle"]
+- ["So8NSObjectP", "handleMethodCall"]
+- !private ["So8NSObjectP", "hasPrefix"]
+- ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "main"]
+- !private ["So8NSObjectP", "messenger"]
+- !private ["So8NSObjectP", "persistentDomain"]
+- !private ["So8NSObjectP", "persistentDomainForName"]
+- ["So8NSObjectP", "register"]
+- ["So8NSObjectP", "registerWithRegistrar"]
+- ["So8NSObjectP", "remove"]
+- !private ["So8NSObjectP", "removeObject"]
+- !private ["So8NSObjectP", "removeObjectForKey"]
+- !private ["So8NSObjectP", "set"]
+- ["So8NSObjectP", "setBool"]
+- ["So8NSObjectP", "setDouble"]
+- !private ["So8NSObjectP", "setFloat"]
+- !private ["So8NSObjectP", "setInteger"]
+- !private ["So8NSObjectP", "setObject"]
+- !private ["So8NSObjectP", "setURL"]
+- ["So8NSObjectP", "setValue"]
+- !private ["So8NSObjectP", "standard"]
+- !private ["So19NSPasteboardReadingP", "hasPrefix"]
+- !private ["So19NSPasteboardWritingP", "hasPrefix"]
+- !private ["So14NSSecureCodingP", "hasPrefix"]
+- !private ["So8NSStringC", "hasPrefix"]
+- !private ["Sm", "hasPrefix"]
+- !private ["ST", "Element"]
+- !private ["ST", "Iterator"]
+- !private ["ST", ""]
+- !private ["ST", "contains"]
+- !private ["ST", "hasPrefix"]
+- !private ["ST", "makeIterator"]
+- !private ["ST", "subscript"]
+- !private ["Sh", "contains"]
+- !private ["s10SetAlgebraP", "contains"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "Bool"]
+- !private ["29shared_preferences_foundation23SharedPreferencesPluginC", "Bundle"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "Double"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "FlutterPluginRegistrar"]
+- !private ["29shared_preferences_foundation23SharedPreferencesPluginC", "Set"]
+- !private ["29shared_preferences_foundation23SharedPreferencesPluginC", "SharedPreferencesPlugin"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "String"]
+- !private ["29shared_preferences_foundation23SharedPreferencesPluginC", "UserDefaults"]
+- !private ["29shared_preferences_foundation23SharedPreferencesPluginC", "UserDefaultsApiSetup"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", ""]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "clear"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "deinit"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "getAll"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "getAllPrefs"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "handle"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "handleMethodCall"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "init"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "register"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "registerWithRegistrar"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "remove"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "setBool"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "setDouble"]
+- ["29shared_preferences_foundation23SharedPreferencesPluginC", "setValue"]
+- !private ["SS", "hasPrefix"]
+- !private ["Sy", "hasPrefix"]
+- !private ["s16TextOutputStreamP", ""]
+- !private ["s16TextOutputStreamP", "hasPrefix"]
+- !private ["s20TextOutputStreamableP", ""]
+- !private ["s20TextOutputStreamableP", "hasPrefix"]
+- !private ["So14NSUserDefaultsC", "persistentDomain"]
+- !private ["So14NSUserDefaultsC", "removeObject"]
+- !private ["So14NSUserDefaultsC", "set"]
+- !private ["So14NSUserDefaultsC", "standard"]
+- !private ["29shared_preferences_foundation15UserDefaultsApiP", "Bundle"]
+- !private ["29shared_preferences_foundation15UserDefaultsApiP", "Set"]
+- !private ["29shared_preferences_foundation15UserDefaultsApiP", "SharedPreferencesPlugin"]
+- !private ["29shared_preferences_foundation15UserDefaultsApiP", "UserDefaults"]
+- !private ["29shared_preferences_foundation15UserDefaultsApiP", "UserDefaultsApiSetup"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", ""]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "clear"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "getAll"]
+- !private ["29shared_preferences_foundation15UserDefaultsApiP", "getAllPrefs"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "handle"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "handleMethodCall"]
+- !private ["29shared_preferences_foundation15UserDefaultsApiP", "init"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "register"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "registerWithRegistrar"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "remove"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "setBool"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "setDouble"]
+- ["29shared_preferences_foundation15UserDefaultsApiP", "setValue"]
+- !private ["29shared_preferences_foundation20UserDefaultsApiSetupC", "setUp"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "hasPrefix"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "hasPrefix"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "hasPrefix"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "hasPrefix"]
+- !private ["s19_HasContiguousBytesP", "hasPrefix"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "contains"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "hasPrefix"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Bundle"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Set"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "SharedPreferencesPlugin"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UserDefaults"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UserDefaultsApiSetup"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "bundleIdentifier"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "clear"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "getAll"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "getAllPrefs"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "handle"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "handleMethodCall"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "hasPrefix"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "main"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "persistentDomain"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "register"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "registerWithRegistrar"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "remove"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "removeObject"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "set"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "setBool"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "setDouble"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "setValue"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "standard"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "Bundle"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "Set"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "SharedPreferencesPlugin"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "UserDefaults"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "UserDefaultsApiSetup"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", ""]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "bundleIdentifier"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "clear"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "getAll"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "getAllPrefs"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "handle"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "handleMethodCall"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "hasPrefix"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "init"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "main"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "persistentDomain"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "register"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "registerWithRegistrar"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "remove"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "removeObject"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "set"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "setBool"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "setDouble"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "setValue"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "standard"]
+- !private ["s21_ObjectiveCBridgeableP", "_ObjectiveCType"]
+- !private ["s21_ObjectiveCBridgeableP", "_bridgeToObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "_conditionallyBridgeFromObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "_forceBridgeFromObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "_unconditionallyBridgeFromObjectiveC"]
+- !private ["s21_ObjectiveCBridgeableP", "contains"]
+- !private ["s21_ObjectiveCBridgeableP", "hasPrefix"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["So13CKRecordValueP", "hasPrefix"]
+depends-nominal:
+- !private "SK"
+- !private "So8NSBundleC"
+- !private "8CloudKit21CKRecordValueProtocolP"
+- "s7CVarArgP"
+- !private "Sl"
+- !private "SL"
+- "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "Se"
+- !private "SD"
+- !private "SE"
+- "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "So13FlutterPluginP"
+- !private "So22FlutterPluginRegistrarP"
+- "SH"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- !private "So19NSPasteboardReadingP"
+- !private "So19NSPasteboardWritingP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "Sm"
+- !private "ST"
+- !private "Sh"
+- !private "s10SetAlgebraP"
+- "29shared_preferences_foundation23SharedPreferencesPluginC"
+- !private "SS"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So14NSUserDefaultsC"
+- "29shared_preferences_foundation15UserDefaultsApiP"
+- !private "29shared_preferences_foundation20UserDefaultsApiSetupC"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "10Foundation37_KeyValueCodingAndObservingPublishingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "So13CKRecordValueP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/XPC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/ObjectiveC.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreMedia.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreData.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Combine.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Dispatch.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Darwin.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreLocation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Foundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreFoundation.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreAudio.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreGraphics.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/IOKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CloudKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/AppKit.swiftmodule/x86_64-apple-macos.swiftmodule"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterPluginMacOS.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterPluginRegistrarMacOS.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterMacOS.h"
+- "/Users/itdev/rian/flutter.penitipan/frontend/macos/Pods/Target Support Files/shared_preferences_foundation/shared_preferences_foundation-umbrella.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterEngine.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterTexture.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterAppDelegate.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterBinaryMessenger.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterViewController.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterCodecs.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterChannels.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterMacros.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterPlatformViews.h"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterDartProject.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/dyld.modulemap"
+- "/Users/itdev/rian/flutter.penitipan/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/shared_preferences_foundation.build/unextended-module.modulemap"
+- "/Users/jordy/development/sdks/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioTypes.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CloudKit.framework/Headers/CloudKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "ba712298f61881eb71ac7e0a6dca6a2f"

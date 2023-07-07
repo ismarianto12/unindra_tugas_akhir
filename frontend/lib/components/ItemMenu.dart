@@ -3,19 +3,19 @@ import '../model/menugrid.dart';
 
 List<MenuItem> menuItems = [
   MenuItem(
-    title: 'Saldo',
+    title: 'Transaksi Penitipan',
     icon: Icons.money,
     colors: Color.fromARGB(255, 186, 167, 21),
     route: '/saldo',
   ),
   MenuItem(
-    title: 'Lokasi',
+    title: 'Pengembalian',
     icon: Icons.map,
     colors: Color.fromARGB(255, 142, 227, 144),
     route: '/saldo',
   ),
   MenuItem(
-    title: 'Status',
+    title: 'Keterlambatan',
     icon: Icons.settings,
     colors: Color.fromARGB(255, 14, 142, 105),
     route: '/saldo',
@@ -33,21 +33,21 @@ List<MenuItem> menuItems = [
     route: '/tracking',
   ),
   MenuItem(
-    title: 'Item 6',
+    title: 'Laporan Penitipan',
     icon: Icons.settings,
     colors: Colors.orange[500],
     route: '/saldo',
   ),
   MenuItem(
-    title: 'Item 7',
+    title: 'Laporan Peminjaman',
     icon: Icons.settings,
-    colors: Colors.green[100],
+    colors: const Color.fromARGB(255, 25, 203, 31),
     route: '/saldo',
   ),
   MenuItem(
-    title: 'Item 8',
+    title: 'Laporan Pendapatan',
     icon: Icons.settings,
-    colors: Colors.green[100],
+    colors: const Color.fromARGB(255, 48, 191, 52),
     route: '/saldo',
   ),
   // tambahkan item lainnya
