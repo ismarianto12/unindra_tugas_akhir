@@ -1,4 +1,4 @@
-#Fri Jul 07 19:36:26 WIB 2023
+#Sun Jul 09 16:17:05 WIB 2023
 base.0=/Users/itdev/rian/flutter.penitipan/frontend/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

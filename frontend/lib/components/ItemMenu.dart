@@ -3,16 +3,16 @@ import '../model/menugrid.dart';
 
 List<MenuItem> menuItems = [
   MenuItem(
-    title: 'Transaksi Penitipan',
+    title: 'List Penitipan',
     icon: Icons.money,
     colors: Color.fromARGB(255, 186, 167, 21),
-    route: '/saldo',
+    route: '/penitipanlist',
   ),
   MenuItem(
-    title: 'Pengembalian',
+    title: 'Form Penitipan',
     icon: Icons.map,
     colors: Color.fromARGB(255, 142, 227, 144),
-    route: '/saldo',
+    route: '/formpenitipan',
   ),
   MenuItem(
     title: 'Keterlambatan',
@@ -24,7 +24,7 @@ List<MenuItem> menuItems = [
     title: 'Penitipan',
     icon: Icons.settings,
     colors: Color.fromARGB(255, 13, 189, 98),
-    route: '/penitipan',
+    route: '/penitipanlist',
   ),
   MenuItem(
     title: 'Tracking',
@@ -33,19 +33,19 @@ List<MenuItem> menuItems = [
     route: '/tracking',
   ),
   MenuItem(
-    title: 'Laporan Penitipan',
+    title: 'Penitipan',
     icon: Icons.settings,
     colors: Colors.orange[500],
     route: '/saldo',
   ),
   MenuItem(
-    title: 'Laporan Peminjaman',
+    title: 'Peminjaman',
     icon: Icons.settings,
     colors: const Color.fromARGB(255, 25, 203, 31),
-    route: '/saldo',
+    route: '/laporan_peminjaman',
   ),
   MenuItem(
-    title: 'Laporan Pendapatan',
+    title: 'Pendapatan',
     icon: Icons.settings,
     colors: const Color.fromARGB(255, 48, 191, 52),
     route: '/saldo',

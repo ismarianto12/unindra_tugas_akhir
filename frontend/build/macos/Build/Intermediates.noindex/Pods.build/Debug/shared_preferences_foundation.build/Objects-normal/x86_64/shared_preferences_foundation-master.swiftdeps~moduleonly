@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)"
-options: "88d52ded42bbca8f71ac13a511eb1fd1"
-build_time: [1688656171, 959941000]
-inputs:
-  "/Users/itdev/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.0/darwin/Classes/messages.g.swift": !dirty [1688395882, 311501757]
-  "/Users/itdev/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.0/darwin/Classes/SharedPreferencesPlugin.swift": !dirty [1688395882, 305202262]

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:penitipan/components/Navigate.dart';
+import 'package:penitipan/pages/master/ListMaster.dart';
 import 'package:penitipan/pages/master/master.dart';
 
 import '../../env.dart';
@@ -235,7 +236,8 @@ class _FormAddState extends State<FormAdd> {
             TextButton(
               child: Text('Tidak'),
               onPressed: () {
-                Route route = MaterialPageRoute(builder: (context) => Master());
+                Route route =
+                    MaterialPageRoute(builder: (context) => ListMaster());
                 Navigator.push(context, route);
               },
             ),

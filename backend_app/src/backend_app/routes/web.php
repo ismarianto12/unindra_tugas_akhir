@@ -44,18 +44,19 @@ $router->group(['prefix' => 'masterdata/satuan'], function () use ($router) {
     $router->get('satuan', 'MasterDataController@index');
     // $router->get('satu', 'MasterDataController@index');
     $router->post('insert', 'MasterDataController@save');
-    // $router->post('firststep/{params}', 'Oawebcontroller@firststep'); 
-    // $router->post('save', 'Oawebcontroller@save');
-    // $router->get('update', 'Oawebcontroller@update');
-
-    // // $router->get('cekdetail','Oawebcontroller@cekdetail');
-    // $router->get('cekdetail/{id}', 'Oawebcontroller@cekdetail');
-    // // signature
-
-    // $router->post('savesignature', 'Oawebcontroller@save_signature');
-    // $router->post('daftar_baru', 'Oawebcontroller@daftar_baru');
 });
-$router->post('login', 'LoginController@accesslogin'); 
+
+$router->group(['prefix' => 'user'], function () use ($router) {
+    $router->get('list', 'UserController@index');
+    $router->post('insert', 'UserController@store');
+});
+
+$router->group(['prefix' => 'penitipan'], function () use ($router) {
+    $router->get('list', 'PenitipanController@index');
+    $router->post('simpan', 'PenitipanController@save');
+});
+
+$router->post('login', 'LoginController@accesslogin');
 
 $router->get('sendata/{id}', 'Oawebcontroller@sendata');
 $router->get('encp/{param_id}', 'Oawebcontroller@encp');

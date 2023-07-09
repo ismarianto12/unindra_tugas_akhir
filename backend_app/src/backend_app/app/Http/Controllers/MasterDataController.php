@@ -13,9 +13,7 @@ class MasterDataController extends Controller
     }
     public function index()
     {
-        $data = [
-            'masterdata v1'
-        ];
+       $data = \DB::table('masterdata')->get();
         return response()->json($data);
     }
     public function save()
