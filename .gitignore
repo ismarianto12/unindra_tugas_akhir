@@ -1,2 +1,3 @@
-/backend/venedor
+/backend/vendor
 /frontend/.dart_tool
+/frontend/build
