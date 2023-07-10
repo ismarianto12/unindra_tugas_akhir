@@ -74,6 +74,7 @@ class _DashboardState extends State<Dashboard> {
                     SizedBox(height: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
                           "Halaman Admin",

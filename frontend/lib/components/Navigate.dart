@@ -1,6 +1,8 @@
 import 'package:penitipan/pages/dashboard.dart';
 import 'package:penitipan/pages/listdata.dart';
 import 'package:penitipan/pages/productcat.dart';
+import 'package:penitipan/pages/user/profile.dart';
+
 import 'package:flutter/material.dart';
 
 class Navigate extends StatefulWidget {
@@ -16,7 +18,7 @@ class _NavigateState extends State<Navigate> {
     Dashboard(),
     ListData(),
     Productcat(),
-    Dashboard(),
+    Profile(),
   ];
 
   @override
@@ -36,6 +38,7 @@ class _NavigateState extends State<Navigate> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        height: 55,
         color: Colors.blue[500],
         shape: CircularNotchedRectangle(),
         child: Container(
