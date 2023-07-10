@@ -21,7 +21,6 @@ class _LoginState extends State<Login> {
   final _passwordController = TextEditingController();
 
   bool _isLoading = false;
-
   bool _validateInputs() {
     if (_usernameController.text.isEmpty || _passwordController.text.isEmpty) {
       return false;
@@ -81,17 +80,17 @@ class _LoginState extends State<Login> {
               SizedBox(height: 100),
               // AssetImage("assets/images/login.jpeg"),
               Image.asset(
-                "assets/images/login.jpeg",
-                height: 100,
-                width: 100,
+                "assets/images/login_app.png",
+                height: 150,
+                width: 150,
               ),
 
               SizedBox(height: 10),
               const Text(
-                'Welcome Page',
+                'Aplikasi Pentipan dan peminjaman barang',
                 style: TextStyle(fontSize: 14, color: Colors.white),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 12),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -126,9 +125,9 @@ class _LoginState extends State<Login> {
                               // ),
                             ),
                             validator: (value) {
-                              // if (value.isEmpty) {
-                              //   return 'Please enter your email';
-                              // }
+                              if (value!.isEmpty) {
+                                return 'Please enter your username';
+                              }
                               return null;
                             },
                           ),
@@ -160,9 +159,9 @@ class _LoginState extends State<Login> {
                               // ),
                             ),
                             validator: (value) {
-                              // if (value.isEmpty) {
-                              //   return 'Please enter your password';
-                              // }
+                              if (value!.isEmpty) {
+                                return 'Please enter your password';
+                              }
                               return null;
                             },
                           ),
@@ -222,5 +221,12 @@ class _LoginState extends State<Login> {
         ),
       )),
     );
+  }
+
+  @override
+  void dispose() {
+    _usernameController.text;
+    _passwordController.text;
+    super.dispose();
   }
 }

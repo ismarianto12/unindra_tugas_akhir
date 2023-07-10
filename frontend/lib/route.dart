@@ -1,13 +1,18 @@
 import 'package:penitipan/components/Navigate.dart';
 import 'package:flutter/material.dart';
+import 'package:penitipan/pages/login.dart';
 import 'package:penitipan/pages/master/ListMaster.dart';
 import 'package:penitipan/pages/master/user/ListUser.dart';
+import 'package:penitipan/pages/peminjaman/ListPinjam.dart';
+import 'package:penitipan/pages/peminjaman/PeminjamanBarang.dart';
 import 'package:penitipan/pages/penitipan/PenitipanBarangForm.dart';
 import 'package:penitipan/pages/penitipan/penitipanList.dart';
 
 class MyRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case '/login':
+        return MaterialPageRoute(builder: (_) => Login());
       case '/dashboard':
         return MaterialPageRoute(builder: (_) => Navigate());
       case '/home':
@@ -22,27 +27,27 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => Navigate());
       case '/masterdat':
         return MaterialPageRoute(builder: (_) => ListMaster());
-
       // admin panel
       case '/user':
         return MaterialPageRoute(builder: (_) => ListUser());
       case '/formpenitipan':
         return MaterialPageRoute(builder: (_) => PenitipanBarangForm());
       case '/penitipanlist':
-        return MaterialPageRoute(
-            builder: (_) =>
-                PenitipanList()); // Use PenitipanList widget for penitipanlist route
-
+        return MaterialPageRoute(builder: (_) => PenitipanList());
+      case '/peminjamanform':
+        return MaterialPageRoute(builder: (_) => PeminjamanBarangForm());
+      case '/peminjamanlist':
+        return MaterialPageRoute(builder: (_) => ListPinjam());
+      // Use PenitipanList widget for penitipanlist route
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Text(
-                    'Page Under Maintence, Page Route : ${settings.name}',
-                    style: const TextStyle(fontSize: 20.0),
-                  ),
+                Text(
+                  'Page Under Maintence, Page Route : ${settings.name}',
+                  style: const TextStyle(fontSize: 20.0),
                 ),
                 MaterialButton(
                   color: Colors.red, // Background color
@@ -50,7 +55,14 @@ class MyRouter {
                     borderRadius: BorderRadius.circular(100),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(_, "/dashboard");
+                    // Navigator.of(_).pushReplacement(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const Navigate(),
+                    //   ),
+                    // );
+                    Route route =
+                        MaterialPageRoute(builder: (_) => const Navigate());
+                    Navigator.push(_, route);
                   },
                   child: const Padding(
                     padding: const EdgeInsets.all(12.0),

@@ -45,10 +45,10 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
       int.parse(formattedDate.substring(0, 2)), // Day
     );
     Duration durasiPenitipan = tglPengembalian.difference(tglHariIni);
-    int totalHari = durasiPenitipan.inDays;
+    int totalHari = durasiPenitipan.inDays + 1;
     int biayaPenitipan = totalHari * 10000;
 
-    _durasiPenitipanController.text = totalHari.toString();
+    _durasiPenitipanController.text = totalHari.toString() + ' Hari';
     _biayaPenitipanController.text = biayaPenitipan.toString();
   }
 
@@ -83,11 +83,58 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/penitipanlist');
-        },
-        child: Icon(Icons.home),
+      floatingActionButton: Container(
+        color: Colors.white,
+        margin: EdgeInsets.only(top: 20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            MaterialButton(
+              color: Color.fromARGB(255, 139, 187, 17), // Background color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100),
+              ),
+              onPressed: _simpanData,
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.save,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Simpan',
+                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            MaterialButton(
+              color: Color.fromARGB(255, 227, 179, 5), // Background color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100),
+              ),
+              onPressed: () {},
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.restore,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Batal',
+                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       key: _scaffoldKey,
       appBar: AppBar(
@@ -98,8 +145,8 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
           child: Column(
             children: [
               Text('Tambah Penitipan Barang'),
-              Image.network(
-                "https://static-00.iconduck.com/assets.00/completed-tasks-illustration-2048x1847-1aps0k6r.png",
+              Image.asset(
+                "assets/images/penitipan_image.png",
                 height: 200,
                 width: 200,
               ),
@@ -207,12 +254,6 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 16.0),
                         ),
-                        // validator: (value) {
-                        //   if (value!.isEmpty) {
-                        //     return 'Durasi penitipan harus diisi';
-                        //   }
-                        //   return null;
-                        // },
                       ),
                       SizedBox(height: 20),
                       TextFormField(
@@ -240,51 +281,7 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
                               vertical: 12.0, horizontal: 16.0),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: MaterialButton(
-                              color: Color.fromARGB(255, 139, 187, 17),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                              onPressed: _simpanData,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.save, color: Colors.white),
-                                    Text(
-                                      'Simpan',
-                                      style: TextStyle(
-                                          fontSize: 18.0, color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: MaterialButton(
-                              color: Color.fromARGB(255, 212, 12, 12),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                              onPressed: () {},
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Text(
-                                  'Cancel',
-                                  style: TextStyle(
-                                      fontSize: 18.0, color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
+                      SizedBox(height: 100),
                     ],
                   ),
                 ),

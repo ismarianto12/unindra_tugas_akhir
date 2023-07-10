@@ -26,6 +26,7 @@ class ExerciseTile extends StatelessWidget {
                   padding: EdgeInsets.all(16),
                   color: color,
                   child: Icon(
+                    size: 18.0,
                     Icons.money_rounded,
                     color: Colors.white,
                   ),
@@ -49,6 +50,7 @@ class ExerciseTile extends StatelessWidget {
           Icon(
             Icons.more_horiz,
             color: Colors.grey,
+            size: 30.0,
           ),
         ],
       ),

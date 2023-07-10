@@ -25,8 +25,8 @@ class _DashboardState extends State<Dashboard> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25.0),
-                bottomRight: Radius.circular(25.0),
+                bottomLeft: Radius.circular(35.0),
+                bottomRight: Radius.circular(35.0),
               ),
               color: Color.fromARGB(255, 5, 123, 219),
             ),
@@ -38,14 +38,14 @@ class _DashboardState extends State<Dashboard> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10),
+                    SizedBox(height: 40),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.network(
                           "https://img.freepik.com/free-icon/user_318-908495.jpg?w=4000",
-                          height: 80,
-                          width: 80,
+                          height: 60,
+                          width: 60,
                         ),
                         SizedBox(width: 10),
                         Column(
@@ -73,7 +73,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     SizedBox(height: 10),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           "Halaman Admin",
@@ -95,7 +95,8 @@ class _DashboardState extends State<Dashboard> {
                     SizedBox(height: 20),
                   ],
                 ),
-                SizedBox(height: 10),
+                // SizedBox(height: 30),
+                SizedBox(height: 40),
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.blue[500],
@@ -116,7 +117,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             height: 40,
@@ -132,7 +133,7 @@ class _DashboardState extends State<Dashboard> {
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
-                      'Master Data',
+                      '1. Master Data',
                       style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.white,
@@ -150,7 +151,7 @@ class _DashboardState extends State<Dashboard> {
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
-                      'Master Satuan',
+                      '2. Master Satuan',
                       style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.white,
@@ -170,7 +171,7 @@ class _DashboardState extends State<Dashboard> {
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
-                      'Master User',
+                      '3. Master User',
                       style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.white,
@@ -198,7 +199,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 SizedBox(width: 10),
                 MaterialButton(
-                  color: Color.fromARGB(255, 243, 39, 16),
+                  color: Color.fromARGB(255, 16, 243, 217),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),
@@ -244,7 +245,7 @@ class _DashboardState extends State<Dashboard> {
           Text(
             'Total Pendapatan',
             style: TextStyle(
-              fontSize: 18.0,
+              fontSize: 15.0,
               color: Color.fromARGB(255, 0, 0, 0),
               fontWeight: FontWeight.bold,
             ),
@@ -270,6 +271,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
+          SizedBox(height: 20),
         ],
       ),
     );
@@ -294,10 +296,8 @@ class _DashboardState extends State<Dashboard> {
             TextButton(
               child: Text('Ya'),
               onPressed: () {
-                // Tambahkan kode untuk menghapus data di sini
-                // Route route = MaterialPageRoute(builder: (context) => Login());
-                // Navigator.push(context, route);
-                // Navigator.of(context).pop(); // Tutup dialog
+                Navigator.pushNamed(context, '/login');
+                Navigator.of(context).pop(); // Tutup dialog
               },
             ),
             TextButton(
