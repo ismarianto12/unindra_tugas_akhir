@@ -19,9 +19,9 @@ List<MenuItem> menuItems = [
   MenuItem(
     title: 'Pegembalian',
     subtitle: 'Penitipan',
-    icon: Icons.settings,
+    icon: Icons.keyboard_return_rounded,
     colors: Color.fromARGB(255, 14, 142, 105),
-    route: '/saldo',
+    route: '/pengembalian',
   ),
   MenuItem(
     title: 'Laporan',
@@ -52,11 +52,11 @@ List<MenuItem> menuItems = [
     route: '/laporan_peminjaman',
   ),
   MenuItem(
-    title: 'Pendapatan',
-    subtitle: 'Penitipan',
+    title: 'Pengembalian',
+    subtitle: 'Peminjaman',
     icon: Icons.money_off_csred_rounded,
     colors: const Color.fromARGB(255, 48, 191, 52),
-    route: '/saldo',
+    route: '/retunpinjam',
   ),
   // tambahkan item lainnya
 ];

@@ -1,17 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
- */
-// ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
-
 if (isset($_SERVER['HTTP_ORIGIN'])) {
     // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
     // you want to allow, and if so:
@@ -56,7 +44,13 @@ $router->group(['prefix' => 'penitipan'], function () use ($router) {
     $router->post('simpan', 'PenitipanController@save');
 });
 
-$router->post('login', 'LoginController@accesslogin');
 
+$router->group(['prefix' => 'user'], function () use ($router) {
+    $router->get('list', 'PenitipanController@index');
+    $router->post('simpan', 'PenitipanController@save');
+    $router->post('profile/{id}', 'UserController@show');
+}); 
+
+$router->post('login', 'LoginController@accesslogin');
 $router->get('sendata/{id}', 'Oawebcontroller@sendata');
 $router->get('encp/{param_id}', 'Oawebcontroller@encp');

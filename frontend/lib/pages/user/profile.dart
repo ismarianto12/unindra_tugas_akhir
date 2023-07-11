@@ -29,9 +29,7 @@ class _ProfileState extends State<Profile> {
     final res = Service.getProfile('test');
     print(res);
     setState(() {
-      // final data = response;
-
-      // print(data);
+      // print(data.username);
       _usernameController.text = "TEST";
       _emailController.text = "TEST";
       _passwordController.text = "TEST";

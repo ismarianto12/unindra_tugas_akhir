@@ -5,8 +5,10 @@ import 'package:penitipan/pages/master/ListMaster.dart';
 import 'package:penitipan/pages/master/user/ListUser.dart';
 import 'package:penitipan/pages/peminjaman/ListPinjam.dart';
 import 'package:penitipan/pages/peminjaman/PeminjamanBarang.dart';
+import 'package:penitipan/pages/pengembalian/pengembalian.dart';
 import 'package:penitipan/pages/penitipan/PenitipanBarangForm.dart';
 import 'package:penitipan/pages/penitipan/penitipanList.dart';
+import 'package:penitipan/pages/returnpinjam/Returnpinjam.dart';
 
 class MyRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -38,6 +40,12 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => PeminjamanBarangForm());
       case '/peminjamanlist':
         return MaterialPageRoute(builder: (_) => ListPinjam());
+      case '/pengembalian':
+        return MaterialPageRoute(builder: (_) => Pegembalian());
+
+      case '/returnpinjam':
+        return MaterialPageRoute(builder: (_) => Returpinjam());
+
       // Use PenitipanList widget for penitipanlist route
       default:
         return MaterialPageRoute(

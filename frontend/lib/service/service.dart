@@ -6,8 +6,7 @@ import 'dart:convert';
 class Service {
   static Future<List<dynamic>> getProfile(String token) async {
     final response =
-        await http.post(Uri.parse(API_URL + "/user/profile?token=$token"));
-
+        await http.post(Uri.parse(API_URL + "/user/profile/$token"));
     print(response.body);
     return json.decode(response.body);
   }
