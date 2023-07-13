@@ -4,6 +4,7 @@ import 'package:penitipan/components/Navigate.dart';
 import 'package:penitipan/env.dart';
 import 'package:penitipan/pages/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'Daftar.dart';
 import 'forgot.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -188,6 +189,32 @@ class _LoginState extends State<Login> {
                                     padding: const EdgeInsets.all(12.0),
                                     child: Text(
                                       'Login',
+                                      style: TextStyle(
+                                          fontSize: 18.0, color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(30),
+                                child: MaterialButton(
+                                  // minWidth: 100,
+                                  color: Color.fromARGB(
+                                      255, 236, 155, 4), // Background color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  onPressed: () {
+                                    Route route = MaterialPageRoute(
+                                        builder: (context) => const Daftar());
+                                    Navigator.push(context, route);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Text(
+                                      'Daftar',
                                       style: TextStyle(
                                           fontSize: 18.0, color: Colors.white),
                                     ),

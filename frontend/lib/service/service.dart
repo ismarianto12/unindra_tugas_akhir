@@ -47,6 +47,16 @@ class Service {
     }
   }
 
+// route daftar
+  static Future<List<dynamic>> userDaftar(String token, String nama,
+      String email, String password, String ulanginpass) async {
+    final response =
+        await http.post(Uri.parse(API_URL + "/user/profile?token=$token"));
+
+    // print(response.body);
+    return json.decode(response.body);
+  }
+
   // route pengembalian data
   static Future<List<dynamic>> pengembalianData(String token) async {
     final response = await http.post(Uri.parse(

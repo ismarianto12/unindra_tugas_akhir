@@ -46,10 +46,12 @@ $router->group(['prefix' => 'penitipan'], function () use ($router) {
 
 
 $router->group(['prefix' => 'user'], function () use ($router) {
+    $router->get('daftar', 'LoginController@daftar');
     $router->get('list', 'PenitipanController@index');
+
     $router->post('simpan', 'PenitipanController@save');
-    $router->post('profile/{id}', 'UserController@show');
-}); 
+    $router->post('profile/{id}', 'LoginController@show');
+});
 
 $router->post('login', 'LoginController@accesslogin');
 $router->get('sendata/{id}', 'Oawebcontroller@sendata');

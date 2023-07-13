@@ -63,7 +63,6 @@ class Logincontroller extends Controller
     public function show($id)
     {
         try {
-
             $data = Login::where('id', $id)->get();
             if ($data->count() > 0) {
                 return response()->json([
@@ -135,6 +134,25 @@ class Logincontroller extends Controller
                 'messages' => 'unauthenticated'
             ], 403);
         } else {
+        }
+    }
+    public function daftar()
+    {
+        try {
+            $Login = new Login;
+            $Login->username = $this->request->username;
+            $Login->name = $this->request->name;
+            $Login->password = $this->request->password;
+            $Login->level = $this->request->level;
+            $Login->save();
+
+            return response()->json([
+                'messages' => 'Berhasil daftar',
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'messages' => $th,
+            ], 400);
         }
     }
 
