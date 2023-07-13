@@ -100,7 +100,7 @@ class _LoginState extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
                             controller: _usernameController,
                             keyboardType: TextInputType.emailAddress,
@@ -134,7 +134,7 @@ class _LoginState extends State<Login> {
                         ),
                         SizedBox(height: 5),
                         Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
                             controller: _passwordController,
                             obscureText: true,

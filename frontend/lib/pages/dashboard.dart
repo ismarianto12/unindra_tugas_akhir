@@ -51,45 +51,50 @@ class _DashboardState extends State<Dashboard> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Hy Alex",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Hy Alex",
+                                  style: TextStyle(
+                                    color: const Color.fromARGB(
+                                        255, 255, 255, 255),
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "Welcome Page",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Welcome Page",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Halaman Admin",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "Last Update : 12 Jan, 2023",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 252, 252, 252),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Halaman Admin",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "Last Update : 12 Jan, 2023",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 252, 252, 252),
-                            fontSize: 12,
-                          ),
                         ),
                       ],
                     ),
@@ -97,21 +102,23 @@ class _DashboardState extends State<Dashboard> {
                   ],
                 ),
                 // SizedBox(height: 30),
-                SizedBox(height: 40),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blue[500],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: EdgeInsets.all(4),
-                  child: IconButton(
-                    color: Colors.blue[500],
-                    onPressed: () {
-                      _showConfirmationDialog();
-                    },
-                    icon: Icon(
-                      Icons.logout_rounded,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                Padding(
+                  padding: const EdgeInsets.only(top: 28.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue[500],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: EdgeInsets.all(4),
+                    child: IconButton(
+                      color: Colors.blue[500],
+                      onPressed: () {
+                        _showConfirmationDialog();
+                      },
+                      icon: Icon(
+                        Icons.logout_rounded,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
                     ),
                   ),
                 ),
@@ -220,6 +227,24 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           SizedBox(height: 20),
+          SizedBox(width: 20),
+          Padding(
+            padding: const EdgeInsets.only(left: 48.0),
+            child: Row(
+              children: [
+                Image.network(
+                  'https://static.vecteezy.com/system/resources/previews/009/392/001/non_2x/app-menu-icon-sign-symbol-design-free-png.png',
+                  height: 40,
+                  width: 40,
+                ),
+                Text(
+                  "MENU UTAMA",
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -243,14 +268,21 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           SizedBox(height: 10),
-          Text(
-            'Total Pendapatan',
-            style: TextStyle(
-              fontSize: 15.0,
-              color: Color.fromARGB(255, 0, 0, 0),
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(left: 48.0),
+            child: Row(
+              children: [
+                Image.network(
+                  'https://static.vecteezy.com/system/resources/previews/009/392/001/non_2x/app-menu-icon-sign-symbol-design-free-png.png',
+                  height: 40,
+                  width: 40,
+                ),
+                Text(
+                  "TOTAL PENDAPATAN",
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
-            textAlign: TextAlign.center,
           ),
           SizedBox(height: 10),
           Padding(

@@ -34,5 +34,9 @@ class PenitipanController extends Controller
             throw $th;
         }
     }
+    public function pengembalian()
+    { 
+        
+    }
     //
 }

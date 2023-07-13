@@ -45,8 +45,8 @@ List<MenuItem> menuItems = [
     route: '/peminjamanlist',
   ),
   MenuItem(
-    title: 'Peminjaman',
-    subtitle: 'Penitipan',
+    title: 'Pengembalian',
+    subtitle: 'Barang Pinjam',
     icon: Icons.settings,
     colors: const Color.fromARGB(255, 25, 203, 31),
     route: '/laporan_peminjaman',

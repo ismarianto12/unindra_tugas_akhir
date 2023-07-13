@@ -1,5 +1,6 @@
 import 'package:penitipan/components/Navigate.dart';
 import 'package:flutter/material.dart';
+import 'package:penitipan/pages/firstmenu.dart';
 import 'package:penitipan/pages/login.dart';
 import 'package:penitipan/pages/master/ListMaster.dart';
 import 'package:penitipan/pages/master/user/ListUser.dart';
@@ -20,8 +21,6 @@ class MyRouter {
       case '/home':
         return MaterialPageRoute(builder: (_) => Navigate());
       case '/feed':
-        return MaterialPageRoute(builder: (_) => Navigate());
-      case '/tambahpenitipan':
         return MaterialPageRoute(builder: (_) => Navigate());
       case '/printdata':
         return MaterialPageRoute(builder: (_) => Navigate());
@@ -45,7 +44,8 @@ class MyRouter {
 
       case '/returnpinjam':
         return MaterialPageRoute(builder: (_) => Returpinjam());
-
+      case '/tambahpenitipan':
+        return MaterialPageRoute(builder: (_) => FirstMenu());
       // Use PenitipanList widget for penitipanlist route
       default:
         return MaterialPageRoute(

@@ -46,4 +46,13 @@ class Service {
       throw e;
     }
   }
+
+  // route pengembalian data
+  static Future<List<dynamic>> pengembalianData(String token) async {
+    final response = await http.post(Uri.parse(
+      API_URL + "/user/pengembalian/$token",
+    ));
+    print(response.body);
+    return json.decode(response.body);
+  }
 }
