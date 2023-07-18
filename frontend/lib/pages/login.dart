@@ -8,6 +8,7 @@ import 'Daftar.dart';
 import 'forgot.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -31,10 +32,7 @@ class _LoginState extends State<Login> {
   }
 
   void _submitForm() async {
-    Route route = MaterialPageRoute(builder: (context) => const Navigate());
-    Navigator.push(context, route);
-
-    if (_validateInputs()) {
+    if (_formKey.currentState!.validate()) {
       List<String> printdata = [
         _usernameController.text,
         _passwordController.text,
@@ -46,12 +44,25 @@ class _LoginState extends State<Login> {
       });
       print('${response.body}');
       if (response.statusCode == 200) {
+        Map<String, dynamic> data = json.decode(response.body);
+        String token = data['token'];
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('storage', response.body);
+        prefs.setString('storage', token);
         Route route = MaterialPageRoute(builder: (context) => const Navigate());
         Navigator.push(context, route);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Login berhasil'),
+            // duration: Duration(seconds: 2),
+          ),
+        );
       } else {
-        print('${response.body}');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Username Dan password Salah'),
+            // duration: Duration(seconds: 2),
+          ),
+        );
       }
     } else {
       print('Form validation failed.');
@@ -181,9 +192,10 @@ class _LoginState extends State<Login> {
                                     borderRadius: BorderRadius.circular(100),
                                   ),
                                   onPressed: () {
-                                    Route route = MaterialPageRoute(
-                                        builder: (context) => const Navigate());
-                                    Navigator.push(context, route);
+                                    _submitForm();
+                                    // Route route = MaterialPageRoute(
+                                    //     builder: (context) => const Navigate());
+                                    // Navigator.push(context, route);
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),

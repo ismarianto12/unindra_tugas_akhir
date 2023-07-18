@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ExerciseTile extends StatelessWidget {
   final Color? color;
-  final String? title;
-  final String? subtitle;
+  final dynamic title;
+  final dynamic? subtitle;
 
   const ExerciseTile({Key? key, this.color, this.title, this.subtitle})
       : super(key: key);
@@ -38,11 +38,11 @@ class ExerciseTile extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('$title'),
+                  title,
                   SizedBox(
                     height: 5,
                   ),
-                  Text('$subtitle'),
+                  subtitle,
                 ],
               ),
             ],

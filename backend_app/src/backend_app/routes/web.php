@@ -53,6 +53,14 @@ $router->group(['prefix' => 'user'], function () use ($router) {
     $router->post('profile/{id}', 'LoginController@show');
 });
 
+
+$router->group(['prefix' => 'pengembalian'], function () use ($router) {
+    $router->get('penitipan', 'PenitipanController@konfirmsiPen');
+    $router->get('peminjaman', 'PenitipanController@konfirmasiPem'); 
+ });
+
 $router->post('login', 'LoginController@accesslogin');
+$router->get('export', 'LoginController@export');
 $router->get('sendata/{id}', 'Oawebcontroller@sendata');
-$router->get('encp/{param_id}', 'Oawebcontroller@encp');
+$router->get('encp/{param_id}', 'Oawebcontroller@encp'); 
+

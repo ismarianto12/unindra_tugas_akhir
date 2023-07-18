@@ -292,14 +292,14 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 ExerciseTile(
                   color: Colors.blueAccent,
-                  title: "Pendapatan Peminjaman",
-                  subtitle: "12.0000",
+                  title: Text("Pendapatan Peminjaman"),
+                  subtitle: Text("12.0000"),
                 ),
                 SizedBox(height: 10),
                 ExerciseTile(
                   color: Colors.blueAccent,
-                  title: "Pendapatan Penitipan",
-                  subtitle: "12.0000",
+                  title: Text("Pendapatan Penitipan"),
+                  subtitle: Text("12.0000"),
                 ),
               ],
             ),
@@ -329,8 +329,9 @@ class _DashboardState extends State<Dashboard> {
             TextButton(
               child: Text('Ya'),
               onPressed: () {
-                Navigator.pushNamed(context, '/login');
-                Navigator.of(context).pop(); // Tutup dialog
+                Route route =
+                    MaterialPageRoute(builder: (context) => const Login());
+                Navigator.push(context, route);
               },
             ),
             TextButton(

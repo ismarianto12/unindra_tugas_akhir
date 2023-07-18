@@ -1,2 +1,2 @@
-var API_URL = 'http://10.240.229.251:8088';
-var API_DEV = 'http://10.240.229.251:8088';
+var API_URL = 'https://flutterback.gotrain.id';
+var API_DEV = 'https://flutterback.gotrain.id';

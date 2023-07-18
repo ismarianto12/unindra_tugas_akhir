@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mapel;
 use Illuminate\Http\Request;
 
 class PenitipanController extends Controller
@@ -26,7 +25,7 @@ class PenitipanController extends Controller
             'tanggalPenitipan' => $this->request->tanggalPenitipan,
             'durasiPenitipan' => $this->request->durasiPenitipan,
             'biayaPenitipan' => $this->request->biayaPenitipan,
-            'instruksiKhusus' => $this->request->instruksiKhusus
+            'instruksiKhusus' => $this->request->instruksiKhusus,
         ]);
         return response()->json(['status' => 'ok', 'msg' => 'data berhasil di simpan']);
         try {
@@ -35,8 +34,12 @@ class PenitipanController extends Controller
         }
     }
     public function pengembalian()
-    { 
-        
-    }
-    //
+    {
+        \DB::table('penitipan')->update([
+            'return' => 1,
+        ])->save();
+        return response()->json([
+            'data berhasil',
+        ]);
+    } 
 }

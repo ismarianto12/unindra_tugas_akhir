@@ -176,6 +176,7 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
                       SizedBox(height: 20),
                       TextFormField(
                         controller: _nomorTeleponController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           labelText: 'Nomor Telepon Penitip',
                           border: OutlineInputBorder(
