@@ -1,14 +1,17 @@
 import 'dart:math';
 
 import 'package:penitipan/components/Navigate.dart';
+import 'package:penitipan/components/NavigateUser.dart';
 import 'package:penitipan/env.dart';
 import 'package:penitipan/pages/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:penitipan/pages/dashboardUser.dart';
 import 'Daftar.dart';
 import 'forgot.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'dart:io';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -31,7 +34,28 @@ class _LoginState extends State<Login> {
     }
   }
 
+  void checkCon() async {
+    try {
+      final result = await InternetAddress.lookup('flutterback.gotrain.id');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        print('connected');
+      }
+    } on SocketException catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: const Text('Silahkan Check kembali koneksi anda'),
+        ),
+      );
+    }
+  }
+
+  void inistState() {
+    super.initState();
+    checkCon();
+  }
+
   void _submitForm() async {
+    checkCon();
     if (_formKey.currentState!.validate()) {
       List<String> printdata = [
         _usernameController.text,
@@ -46,10 +70,21 @@ class _LoginState extends State<Login> {
       if (response.statusCode == 200) {
         Map<String, dynamic> data = json.decode(response.body);
         String token = data['token'];
+        String levelid = data['level'].toString();
+        // print(levelid);
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('storage', token);
-        Route route = MaterialPageRoute(builder: (context) => const Navigate());
-        Navigator.push(context, route);
+        prefs.setString('level', levelid);
+
+        if (levelid == "1") {
+          Route route =
+              MaterialPageRoute(builder: (context) => const Navigate());
+          Navigator.push(context, route);
+        } else {
+          Route route =
+              MaterialPageRoute(builder: (context) => const NavigateUser());
+          Navigator.push(context, route);
+        }
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Login berhasil'),
@@ -71,6 +106,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    double containerWidth = MediaQuery.of(context).size.width * 0.99;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 3, 95, 170),
       body: SafeArea(
@@ -178,63 +214,71 @@ class _LoginState extends State<Login> {
                             },
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                margin: EdgeInsets.all(30),
-                                child: MaterialButton(
-                                  // minWidth: 100,
-                                  color: Color.fromARGB(
-                                      255, 139, 187, 17), // Background color
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                  onPressed: () {
-                                    _submitForm();
-                                    // Route route = MaterialPageRoute(
-                                    //     builder: (context) => const Navigate());
-                                    // Navigator.push(context, route);
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Text(
-                                      'Login',
-                                      style: TextStyle(
-                                          fontSize: 18.0, color: Colors.white),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  // margin: EdgeInsets.all(30),
+                                  width: containerWidth - 0.40,
+
+                                  child: MaterialButton(
+                                    //  maxWidth: containerWidth - 0.40,
+                                    color: Color.fromARGB(
+                                        255, 139, 187, 17), // Background color
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                    onPressed: () {
+                                      _submitForm();
+                                      // Route route = MaterialPageRoute(
+                                      //     builder: (context) => const Navigate());
+                                      // Navigator.push(context, route);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: Text(
+                                        'Login',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                margin: EdgeInsets.all(30),
-                                child: MaterialButton(
-                                  // minWidth: 100,
-                                  color: Color.fromARGB(
-                                      255, 236, 155, 4), // Background color
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                  onPressed: () {
-                                    Route route = MaterialPageRoute(
-                                        builder: (context) => const Daftar());
-                                    Navigator.push(context, route);
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Text(
-                                      'Daftar',
-                                      style: TextStyle(
-                                          fontSize: 18.0, color: Colors.white),
+                              SizedBox(width: 20),
+                              Expanded(
+                                child: Container(
+                                  width: containerWidth - 0.60,
+                                  child: MaterialButton(
+                                    // minWidth: 100,
+                                    color: Color.fromARGB(
+                                        255, 236, 155, 4), // Background color
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                    onPressed: () {
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) => const Daftar());
+                                      Navigator.push(context, route);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: Text(
+                                        'Daftar',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                         SizedBox(height: 126),
                         InkWell(

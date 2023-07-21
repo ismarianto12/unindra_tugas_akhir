@@ -28,7 +28,7 @@ List<MenuItem> menuItems = [
     subtitle: 'Penitipan',
     icon: Icons.report,
     colors: Color.fromARGB(255, 13, 189, 98),
-    route: '/penitipanlist',
+    route: '/laporan_penitipan',
   ),
   MenuItem(
     title: 'Data',

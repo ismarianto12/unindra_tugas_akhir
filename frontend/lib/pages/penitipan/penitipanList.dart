@@ -64,31 +64,45 @@ class _PenitipanListState extends State<PenitipanList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 237, 237),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromARGB(255, 8, 200, 18),
+        child: Icon(
+          Icons.refresh,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          fetchData();
+        },
+      ),
+      backgroundColor: Color.fromARGB(255, 237, 234, 234),
       appBar: AppBar(
         title: const Text('Daftar Penitipan Barang'),
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 30,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              decoration: InputDecoration(
+              // onTy
+              decoration: const InputDecoration(
                 enabledBorder: OutlineInputBorder(
                     borderSide:
                         BorderSide(width: 2, color: Colors.white) //<-- SEE HERE
                     ),
                 prefixIcon: Icon(
-                  Icons.access_alarms,
-                  color: const Color.fromARGB(255, 0, 0, 0),
+                  Icons.search,
+                  color: Color.fromARGB(255, 49, 49, 49),
                 ),
                 border: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: const Color.fromARGB(255, 0, 0, 0)),
+                      BorderSide(color: Color.fromARGB(255, 214, 212, 212)),
                 ),
-                fillColor: const Color.fromARGB(255, 0, 0, 0),
+                fillColor: Color.fromARGB(255, 214, 212, 212),
                 hintText: 'Cari ...',
-                hintStyle: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
+                hintStyle: TextStyle(color: Color.fromARGB(255, 56, 56, 56)),
                 // border: OutlineInputBorder(
                 //   borderSide: BorderSide(color: Colors.white),
                 // ),
@@ -129,7 +143,7 @@ class _PenitipanListState extends State<PenitipanList> {
                                     : Colors.orange,
                                 child: Icon(
                                   size: 18.0,
-                                  Icons.money_rounded,
+                                  Icons.view_list_rounded,
                                   color: Colors.white,
                                 ),
                               ),
@@ -147,28 +161,31 @@ class _PenitipanListState extends State<PenitipanList> {
                                 ),
                                 Text(dataPenitipan[index]?['biayaPenitipan'] ??
                                     'Undefined'),
-                                dataPenitipan[index]?['return'] == "1"
-                                    ? Icon(Icons.verified)
-                                    : Text("")
                               ],
                             ),
                           ],
                         ),
-                        InkWell(
-                            onTap: () {
-                              _showConfirmationDialog(dataPenitipan[index]);
-                            },
-                            child: dataPenitipan[index]?['return'] == "1"
-                                ? Icon(
-                                    Icons.verified,
-                                    color: Colors.grey,
-                                    size: 30.0,
-                                  )
-                                : Icon(
-                                    Icons.pending_actions,
-                                    color: Colors.grey,
-                                    size: 30.0,
-                                  )),
+                        dataPenitipan[index]?['return'] != "1"
+                            ? InkWell(
+                                onTap: () {
+                                  _showConfirmationDialog(dataPenitipan[index]);
+                                },
+                                child: dataPenitipan[index]?['return'] == "1"
+                                    ? Icon(
+                                        Icons.verified,
+                                        color: Colors.grey,
+                                        size: 30.0,
+                                      )
+                                    : Icon(
+                                        Icons.pending_actions,
+                                        color: Colors.grey,
+                                        size: 30.0,
+                                      ))
+                            : const Icon(
+                                Icons.verified,
+                                color: Colors.grey,
+                                size: 30.0,
+                              ),
                       ],
                     ),
                   ),

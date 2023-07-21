@@ -1,5 +1,9 @@
 import 'package:penitipan/components/Navigate.dart';
 import 'package:flutter/material.dart';
+import 'package:penitipan/components/NavigateUser.dart';
+import 'package:penitipan/pages/LaporanPenitipan.dart';
+import 'package:penitipan/pages/LaporanPinjam.dart';
+import 'package:penitipan/pages/dashboardUser.dart';
 import 'package:penitipan/pages/firstmenu.dart';
 import 'package:penitipan/pages/login.dart';
 import 'package:penitipan/pages/master/ListMaster.dart';
@@ -10,9 +14,24 @@ import 'package:penitipan/pages/pengembalian/pengembalian.dart';
 import 'package:penitipan/pages/penitipan/PenitipanBarangForm.dart';
 import 'package:penitipan/pages/penitipan/penitipanList.dart';
 import 'package:penitipan/pages/returnpinjam/Returnpinjam.dart';
+import 'package:penitipan/service/middleware.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    Future<String> getSharedPreferencesValue() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String value = prefs
+          .getString('level')
+          .toString(); // Replace 'key' with your own key
+      return value;
+    }
+
+    void levelAcc() async {
+      final String levelid = await Middleware.accesslogin('levelid');
+      // return levelid.toString();
+    }
+
     switch (settings.name) {
       case '/login':
         return MaterialPageRoute(builder: (_) => Login());
@@ -47,15 +66,26 @@ class MyRouter {
       case '/tambahpenitipan':
         return MaterialPageRoute(builder: (_) => FirstMenu());
       // Use PenitipanList widget for penitipanlist route
+      // user login user
+      case '/dashboard_user':
+        return MaterialPageRoute(builder: (_) => DashboarUser());
+      case '/laporan_peminjaman':
+        return MaterialPageRoute(builder: (_) => LaporanPinjam());
+      case '/laporan_penitipan':
+        return MaterialPageRoute(builder: (_) => LaporanPenitipan());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Page Under Maintence, Page Route : ${settings.name}',
-                  style: const TextStyle(fontSize: 20.0),
+                Center(
+                  child: Card(
+                    child: Text(
+                      'Page Under Maintence, Page Route : ${settings.name}',
+                      style: const TextStyle(fontSize: 20.0),
+                    ),
+                  ),
                 ),
                 MaterialButton(
                   color: Colors.red, // Background color
@@ -63,14 +93,21 @@ class MyRouter {
                     borderRadius: BorderRadius.circular(100),
                   ),
                   onPressed: () {
+                    print(levelAcc);
                     // Navigator.of(_).pushReplacement(
                     //   MaterialPageRoute(
                     //     builder: (context) => const Navigate(),
                     //   ),
                     // );
-                    Route route =
-                        MaterialPageRoute(builder: (_) => const Navigate());
-                    Navigator.push(_, route);
+                    if (levelAcc == 1) {
+                      Route route =
+                          MaterialPageRoute(builder: (_) => const Navigate());
+                      Navigator.push(_, route);
+                    } else {
+                      Route route = MaterialPageRoute(
+                          builder: (_) => const NavigateUser());
+                      Navigator.push(_, route);
+                    }
                   },
                   child: const Padding(
                     padding: const EdgeInsets.all(12.0),

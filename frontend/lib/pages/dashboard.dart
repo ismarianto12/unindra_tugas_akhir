@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:penitipan/pages/login.dart';
 import 'package:penitipan/pages/master/ListMaster.dart';
 import 'package:penitipan/pages/master/master.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../components/ItemMenu.dart';
 import '../components/excertile.dart';
 
@@ -227,7 +228,6 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           SizedBox(height: 20),
-          SizedBox(width: 20),
           Padding(
             padding: const EdgeInsets.only(left: 48.0),
             child: Row(
@@ -310,6 +310,13 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  static Future<String?> logout() async {
+    SharedPreferences getval = await SharedPreferences.getInstance();
+    getval.remove("token");
+    getval.remove("level");
+    // getval.remove("id", "");
+  }
+
   Future<void> _showConfirmationDialog() async {
     return showDialog<void>(
       context: context,
@@ -329,9 +336,12 @@ class _DashboardState extends State<Dashboard> {
             TextButton(
               child: Text('Ya'),
               onPressed: () {
+                logout();
                 Route route =
                     MaterialPageRoute(builder: (context) => const Login());
                 Navigator.push(context, route);
+
+                // return exit(1); // Keluarkan app dan menghapus token yang tersimpan
               },
             ),
             TextButton(

@@ -1,21 +1,22 @@
 import 'package:penitipan/pages/dashboard.dart';
+import 'package:penitipan/pages/dashboardUser.dart';
 import 'package:penitipan/pages/listdata.dart';
 import 'package:penitipan/pages/productcat.dart';
 import 'package:penitipan/pages/user/profile.dart';
 
 import 'package:flutter/material.dart';
 
-class Navigate extends StatefulWidget {
-  const Navigate({Key? key}) : super(key: key);
+class NavigateUser extends StatefulWidget {
+  const NavigateUser({Key? key}) : super(key: key);
 
   @override
-  State<Navigate> createState() => _NavigateState();
+  State<NavigateUser> createState() => _NavigateUserState();
 }
 
-class _NavigateState extends State<Navigate> {
+class _NavigateUserState extends State<NavigateUser> {
   int index_color = 0;
   List<Widget> screens = [
-    Dashboard(),
+    DashboarUser(),
     ListData(),
     Productcat(),
     Profile(),
@@ -24,7 +25,6 @@ class _NavigateState extends State<Navigate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: screens[index_color],
       floatingActionButton: FloatingActionButton(
         child: Icon(
@@ -34,12 +34,12 @@ class _NavigateState extends State<Navigate> {
         onPressed: () {
           Navigator.pushNamed(context, "/tambahpenitipan");
         },
-        backgroundColor: Color.fromARGB(255, 3, 95, 170),
+        backgroundColor: const Color.fromARGB(255, 3, 95, 170),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         height: 55,
-        color: Colors.blue[500],
+        color: const Color.fromARGB(255, 3, 95, 170),
         shape: CircularNotchedRectangle(),
         child: Container(
           height:

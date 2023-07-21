@@ -66,7 +66,7 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
         'biayaPenitipan': _biayaPenitipanController.text,
         'instruksiKhusus': _instruksiKhususController.text,
       });
-      print(response.body);
+      // print(response.body);
       if (response.statusCode == 200) {
         SnackBar(
           content: Text('Data berhasil disimpan'),
