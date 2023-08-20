@@ -25,7 +25,7 @@ class _LoginState extends State<Login> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  bool _isLoading = false;
+  bool _isLoading = true;
   bool _validateInputs() {
     if (_usernameController.text.isEmpty || _passwordController.text.isEmpty) {
       return false;
@@ -55,6 +55,9 @@ class _LoginState extends State<Login> {
   }
 
   void _submitForm() async {
+    // if (_isLoading) {
+    _showLoadingDialog();
+    // }
     checkCon();
     if (_formKey.currentState!.validate()) {
       List<String> printdata = [
@@ -95,6 +98,25 @@ class _LoginState extends State<Login> {
           ),
         );
       } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Login Gagal'),
+              content: const Text('Silahkan Check username dan password.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    // Navigator.pushNamedAndRemoveUntil(
+                    //     context, '/dashboard_panel', (route) => false);
+                  },
+                ),
+              ],
+            );
+          },
+        );
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Username Dan password Salah'),
@@ -103,6 +125,11 @@ class _LoginState extends State<Login> {
         );
       }
     } else {
+      setState(
+        () {
+          _isLoading = false;
+        },
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Fom validation failed'),
@@ -312,6 +339,24 @@ class _LoginState extends State<Login> {
           ),
         ),
       )),
+    );
+  }
+
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Row(
+            children: <Widget>[
+              CircularProgressIndicator(),
+              SizedBox(width: 20),
+              Text("Loading ..."),
+            ],
+          ),
+        );
+      },
     );
   }
 

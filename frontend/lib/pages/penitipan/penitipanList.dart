@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:penitipan/components/NavigateUser.dart';
 import 'package:penitipan/pages/penitipan/FormBayarPen.dart';
+import 'package:penitipan/pages/tadaterima.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import '../../env.dart';
@@ -64,9 +65,20 @@ class _PenitipanListState extends State<PenitipanList> {
     }
   }
 
-  Icon _iconStatus(String data) {
+  Widget _iconStatus(String data) {
     if (data.toString() == '1') {
-      return Icon(Icons.check);
+      return Row(
+        children: [
+          GestureDetector(
+              onTap: () {
+                Route route =
+                    MaterialPageRoute(builder: (context) => Tandaterima());
+                Navigator.push(context, route);
+              },
+              child: Icon(Icons.print)),
+          Icon(Icons.check),
+        ],
+      );
     } else if (data.toString() == '2') {
       return Icon(Icons.refresh);
     } else {

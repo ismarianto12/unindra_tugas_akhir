@@ -97,10 +97,10 @@ class _DashboarUserState extends State<DashboarUser> {
                 Color.fromARGB(255, 20, 6, 75)
               ],
             ),
-            // borderRadius: BorderRadius.only(
-            //   bottomLeft: Radius.elliptical(y:120,x:10),
-            //   bottomRight: Radius.circular(120),
-            // ),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40),
+            ),
           ),
           child: Column(
             children: [
@@ -164,7 +164,7 @@ class _DashboarUserState extends State<DashboarUser> {
         MediaQuery.of(context).size.width * 0.91; // 90% of the screen width
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.12,
+      height: MediaQuery.of(context).size.height * 0.10,
       width: containerWidth,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -175,6 +175,8 @@ class _DashboarUserState extends State<DashboarUser> {
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
         ),
       ),
       child: Column(

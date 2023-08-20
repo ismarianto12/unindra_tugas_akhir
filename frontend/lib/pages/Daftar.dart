@@ -16,6 +16,7 @@ class _DaftarState extends State<Daftar> {
 
   late BuildContext dialogContext;
 //
+  final _handphoneController = TextEditingController();
   final _emailController = TextEditingController();
   final _usernameController = TextEditingController();
   final _nameController = TextEditingController();
@@ -78,16 +79,23 @@ class _DaftarState extends State<Daftar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black), // Set the icon color
         backgroundColor: Colors.white,
         title: Text(
-          'Daftar Penitipan dan Peminjaman',
-          style: TextStyle(color: Colors.black),
+          'Daftar ',
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 10,
+            ),
             Image.asset(
               "assets/images/signup.jpeg",
               height: 200,
@@ -103,6 +111,27 @@ class _DaftarState extends State<Daftar> {
                       controller: _emailController,
                       decoration: InputDecoration(
                         labelText: 'Email ',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 12.0, horizontal: 16.0),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Email penitip harus diisi';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.number,
+                      controller: _handphoneController,
+                      decoration: InputDecoration(
+                        labelText: 'No Handphone',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -240,7 +269,7 @@ class _DaftarState extends State<Daftar> {
                       child: MaterialButton(
                         // height: 10.0,
                         color: Color.fromARGB(
-                            255, 230, 200, 5), // Background color
+                            255, 255, 255, 255), // Background color
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(100),
                         ),
@@ -252,13 +281,13 @@ class _DaftarState extends State<Daftar> {
                             children: [
                               const Icon(
                                 Icons.refresh_rounded,
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                               ),
                               SizedBox(width: 20),
                               Text(
                                 'Batal',
                                 style: TextStyle(
-                                    fontSize: 18.0, color: Colors.white),
+                                    fontSize: 18.0, color: Colors.black),
                               ),
                             ],
                           ),

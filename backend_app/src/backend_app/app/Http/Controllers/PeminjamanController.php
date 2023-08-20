@@ -26,6 +26,8 @@ class PeminjamanController extends Controller
             'durasiPenitipan' => $this->request->durasiPenitipan,
             'biayaPenitipan' => $this->request->biayaPenitipan,
             'instruksiKhusus' => $this->request->instruksiKhusus,
+            'id_user' => $this->request->id_user,
+
         ]);
         return response()->json(['status' => 'ok', 'msg' => 'data berhasil di simpan']);
         try {
