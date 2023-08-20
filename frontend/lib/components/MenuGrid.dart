@@ -8,14 +8,14 @@ class MenuGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int crossAxisCount = 4;
+    final int crossAxisCount = 3;
     final int rowCount = (menuItems.length / crossAxisCount).ceil();
 
     return GridView.count(
       crossAxisCount: crossAxisCount,
       padding: EdgeInsets.all(10),
-      mainAxisSpacing: 26,
-      crossAxisSpacing: 0,
+      mainAxisSpacing: 0,
+      crossAxisSpacing: 30,
       children: menuItems.map((item) {
         return InkWell(
           onTap: () {
@@ -25,7 +25,7 @@ class MenuGrid extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   color: item.colors,
                   borderRadius: BorderRadiusDirectional.circular(160),

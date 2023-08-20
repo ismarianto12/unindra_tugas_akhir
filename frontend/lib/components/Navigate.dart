@@ -1,5 +1,8 @@
 import 'package:penitipan/pages/dashboard.dart';
 import 'package:penitipan/pages/listdata.dart';
+import 'package:penitipan/pages/tatacara.dart';
+import 'package:penitipan/pages/lokasi.dart';
+
 import 'package:penitipan/pages/productcat.dart';
 import 'package:penitipan/pages/user/profile.dart';
 
@@ -16,8 +19,8 @@ class _NavigateState extends State<Navigate> {
   int index_color = 0;
   List<Widget> screens = [
     Dashboard(),
-    ListData(),
-    Productcat(),
+    TataCara(),
+    Lokasi(),
     Profile(),
   ];
 
@@ -26,22 +29,17 @@ class _NavigateState extends State<Navigate> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: screens[index_color],
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, "/tambahpenitipan");
-        },
-        backgroundColor: Color.fromARGB(255, 3, 95, 170),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         height: 55,
-        color: Colors.blue[500],
         shape: CircularNotchedRectangle(),
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.blue, Colors.purple],
+            ),
+          ),
           height:
               kToolbarHeight, // Set ukuran tinggi BottomAppBar sesuai dengan kToolbarHeight
           child: Row(

@@ -27,9 +27,9 @@ class MyRouter {
       return value;
     }
 
-    void levelAcc() async {
+    Future<dynamic> levelAcc() async {
       final String levelid = await Middleware.accesslogin('levelid');
-      // return levelid.toString();
+      return levelid.toString();
     }
 
     switch (settings.name) {
@@ -60,7 +60,6 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => ListPinjam());
       case '/pengembalian':
         return MaterialPageRoute(builder: (_) => Pegembalian());
-
       case '/returnpinjam':
         return MaterialPageRoute(builder: (_) => Returpinjam());
       case '/tambahpenitipan':
@@ -99,7 +98,7 @@ class MyRouter {
                     //     builder: (context) => const Navigate(),
                     //   ),
                     // );
-                    if (levelAcc == 1) {
+                    if (levelAcc() == "1") {
                       Route route =
                           MaterialPageRoute(builder: (_) => const Navigate());
                       Navigator.push(_, route);

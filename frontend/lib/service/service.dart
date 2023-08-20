@@ -15,7 +15,7 @@ class Service {
     final response =
         await http.post(Uri.parse(API_URL + "/user/profile?token=$token"));
 
-    print(response.body);
+    // print(response.body);
     return json.decode(response.body);
   }
 
@@ -48,16 +48,22 @@ class Service {
   }
 
 // route daftar
-  static Future<List<dynamic>> userDaftar(String token, String nama,
-      String email, String password, String ulanginpass) async {
+  static Future<void> userDaftar(String token, String email, String username,
+      String nama, String password, String ulanginpass) async {
     final response = await http.post(
       Uri.parse(
         API_URL + "/user/daftar?token=" + token,
       ),
+      body: {
+        'email': email,
+        'username': username,
+        'nama': nama,
+        'password': password
+      },
       headers: {"Authorization": token},
-      // type:'Application/json'
     );
-    // print(response.body);
+    print(response.body);
+    print({username: username, nama: nama, password: password});
     return json.decode(response.body);
   }
 

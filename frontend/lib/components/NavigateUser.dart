@@ -3,6 +3,8 @@ import 'package:penitipan/pages/dashboardUser.dart';
 import 'package:penitipan/pages/listdata.dart';
 import 'package:penitipan/pages/productcat.dart';
 import 'package:penitipan/pages/user/profile.dart';
+import 'package:penitipan/pages/tatacara.dart';
+import 'package:penitipan/pages/lokasi.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,8 +19,8 @@ class _NavigateUserState extends State<NavigateUser> {
   int index_color = 0;
   List<Widget> screens = [
     DashboarUser(),
-    ListData(),
-    Productcat(),
+    TataCara(),
+    Lokasi(),
     Profile(),
   ];
 
@@ -39,9 +41,15 @@ class _NavigateUserState extends State<NavigateUser> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         height: 55,
-        color: const Color.fromARGB(255, 3, 95, 170),
         shape: CircularNotchedRectangle(),
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.blue, Colors.purple],
+            ),
+          ),
           height:
               kToolbarHeight, // Set ukuran tinggi BottomAppBar sesuai dengan kToolbarHeight
           child: Row(

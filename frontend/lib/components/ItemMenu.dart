@@ -56,7 +56,7 @@ List<MenuItem> menuItems = [
     subtitle: 'Peminjaman',
     icon: Icons.money_off_csred_rounded,
     colors: const Color.fromARGB(255, 48, 191, 52),
-    route: '/retunpinjam',
+    route: '/returnpinjam',
   ),
   // tambahkan item lainnya
 ];
