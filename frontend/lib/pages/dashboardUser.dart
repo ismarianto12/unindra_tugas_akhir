@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:penitipan/components/ListPromo.dart';
 import 'package:penitipan/pages/login.dart';
+import 'package:penitipan/pages/peminjaman/ListPinjam.dart';
+import 'package:penitipan/pages/penitipan/penitipanList.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboarUser extends StatefulWidget {
@@ -12,9 +14,23 @@ class DashboarUser extends StatefulWidget {
 
 class _DashboarUserState extends State<DashboarUser> {
   @override
+  String level = '';
+  String username = '';
+  Future<void> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    String level = prefs.getString("level").toString();
+    String username = prefs.getString("username").toString();
+    setState(() => {this.level = level, this.username = username});
+  }
+
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
@@ -23,18 +39,18 @@ class _DashboarUserState extends State<DashboarUser> {
               alignment: AlignmentDirectional.center,
               children: [
                 background_container(context),
-                Positioned(child: background_child(context), bottom: 0),
+                Positioned(child: background_child(context), bottom: -10),
               ],
             ),
             SizedBox(
-              height: 50,
+              height: 20,
             ),
             menuradiend(context),
             SizedBox(
               height: 35,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+              padding: EdgeInsets.only(left: 18.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -134,14 +150,6 @@ class _DashboarUserState extends State<DashboarUser> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(width: 20),
-                  Text(
-                    'Hy Rian Welcome',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: 'tahoma',
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white),
-                  ),
                 ],
               ),
             ],
@@ -153,13 +161,17 @@ class _DashboarUserState extends State<DashboarUser> {
 
   Container background_child(BuildContext context) {
     double containerWidth =
-        MediaQuery.of(context).size.width * 0.99; // 90% of the screen width
+        MediaQuery.of(context).size.width * 0.91; // 90% of the screen width
 
     return Container(
-      height: 80,
+      height: MediaQuery.of(context).size.height * 0.12,
       width: containerWidth,
       decoration: BoxDecoration(
-        color: Colors.white,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.blue, Colors.purple],
+        ),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -167,7 +179,7 @@ class _DashboarUserState extends State<DashboarUser> {
       ),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 2,
           ),
           SizedBox(
@@ -186,12 +198,26 @@ class _DashboarUserState extends State<DashboarUser> {
                 SizedBox(
                   width: 20,
                 ),
-                Center(
-                  child: Text(
-                    "Menu Utama",
-                    style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      'Hy ${username.toUpperCase()} Welcome',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'tahoma',
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                    Center(
+                      child: Text(
+                        "Menu Utama",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -210,12 +236,9 @@ class _DashboarUserState extends State<DashboarUser> {
       width: containerWidth,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            const Color.fromARGB(255, 3, 95, 170),
-            Color.fromARGB(255, 20, 6, 75)
-          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.purple, const Color.fromARGB(255, 10, 91, 158)],
         ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20),
@@ -234,8 +257,9 @@ class _DashboarUserState extends State<DashboarUser> {
             // Your grid items
             InkWell(
               onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/lapor_sptpd', (route) => false);
+                Route route =
+                    MaterialPageRoute(builder: (context) => PenitipanList());
+                Navigator.push(context, route);
               },
               child: Container(
                 child: Column(
@@ -253,8 +277,10 @@ class _DashboarUserState extends State<DashboarUser> {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/list_sptpd', (route) => false);
+                Route router = MaterialPageRoute(
+                  builder: (context) => ListPinjam(),
+                );
+                Navigator.push(context, router);
               },
               child: Container(
                 child: Column(
@@ -272,8 +298,7 @@ class _DashboarUserState extends State<DashboarUser> {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/riwayat_bayar', (route) => false);
+                Navigator.pushNamed(context, '/riwayat_bayar');
               },
               child: Container(
                 child: Column(
@@ -284,7 +309,7 @@ class _DashboarUserState extends State<DashboarUser> {
                       width: 50,
                     ),
                     SizedBox(height: 10),
-                    Text('PEMBAYARAN', style: TextStyle(color: Colors.white))
+                    Text('REPORT', style: TextStyle(color: Colors.white))
                   ],
                 ),
               ),
@@ -329,7 +354,6 @@ class _DashboarUserState extends State<DashboarUser> {
     SharedPreferences getval = await SharedPreferences.getInstance();
     getval.remove("token");
     getval.remove("level");
-    // getval.remove("id", "");
   }
 
   Future<void> _showConfirmationDialog() async {

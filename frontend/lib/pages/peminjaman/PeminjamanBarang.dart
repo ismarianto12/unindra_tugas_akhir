@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../components/Datepicker.dart';
+import '../../components/loading.dart';
 import '../../env.dart';
 
 class PeminjamanBarangForm extends StatefulWidget {
@@ -12,6 +14,11 @@ class PeminjamanBarangForm extends StatefulWidget {
 class _PeminjamanBarangFormState extends State<PeminjamanBarangForm> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final FocusNode _textFocus = FocusNode();
+
+  String id_user = '';
+  String username = '';
+  bool loading = true;
 
   TextEditingController _namaController = TextEditingController();
   TextEditingController _nomorTeleponController = TextEditingController();
@@ -22,9 +29,20 @@ class _PeminjamanBarangFormState extends State<PeminjamanBarangForm> {
   TextEditingController _durasiPenitipanController = TextEditingController();
   TextEditingController _biayaPenitipanController = TextEditingController();
   TextEditingController _instruksiKhususController = TextEditingController();
+
+  Future<void> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    String userid = prefs.getString("userid").toString();
+    String username = prefs.getString("username").toString();
+    _namaController.text = username;
+    setState(() => {id_user = userid, username = username});
+  }
+
   @override
   void initState() {
     super.initState();
+
+    getUsername();
   }
 
   String? _validateAlamat(String? value) {
@@ -52,7 +70,13 @@ class _PeminjamanBarangFormState extends State<PeminjamanBarangForm> {
   }
 
   void _simpanData() async {
+    if (loading) {
+      _showLoadingDialog();
+    }
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        loading = true;
+      });
       var url = Uri.parse(API_URL + '/penitipan/simpan');
       var response = await http.post(url, body: {
         'nama': _namaController.text,
@@ -64,18 +88,34 @@ class _PeminjamanBarangFormState extends State<PeminjamanBarangForm> {
         'durasiPenitipan': _durasiPenitipanController.text,
         'biayaPenitipan': _biayaPenitipanController.text,
         'instruksiKhusus': _instruksiKhususController.text,
+        'id_user': id_user
       });
-      print(response.body);
-      if (response.statusCode == 200) {
+      // print(response.body);
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Data berhasil disimpan'),
+          content: Text('${id_user} ${response.body}'),
+        ),
+      );
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Data berhasil disimpan'),
+          ),
         );
         Navigator.pushNamed(context, '/penitipanlist');
       } else {
+        setState(() {
+          loading = false;
+        });
+        setState(() {
+          loading = false;
+        });
         SnackBar(
           content: Text('Gagal menyimpan data'),
         );
       }
+    } else {
+      _hideLoadingDialog();
     }
   }
 
@@ -141,178 +181,184 @@ class _PeminjamanBarangFormState extends State<PeminjamanBarangForm> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Container(
-            // height: 100,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              alignment: Alignment.topLeft,
-              image: AssetImage('assets/images/loan.png'),
-              fit: BoxFit.fitWidth,
-            )),
-            child: Column(
-              children: [
-                SizedBox(height: 120),
-                Text('Tambah Peminjaman Barang'),
-                // Image.asset(
-                //   "assets/images/loan_top.png",
-                //   height: 200,
-                //   width: 200,
-                // ),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          controller: _namaController,
-                          decoration: InputDecoration(
-                            labelText: 'Nama Peminjam',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+          child: Column(
+            children: [
+              Image.asset(
+                "assets/images/penitipan_image.png",
+                height: 200,
+                width: 200,
+              ),
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: _namaController,
+                        decoration: InputDecoration(
+                          labelText: 'Nama Penitip',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Nama penitip harus diisi';
-                            }
-                            return null;
-                          },
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          controller: _nomorTeleponController,
-                          decoration: InputDecoration(
-                            labelText: 'Nomor Telepon Peminjam',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Nama penitip harus diisi';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        controller: _nomorTeleponController,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: 'Nomor Telepon Penitip',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Nomor telepon penitip harus diisi';
-                            }
-                            return null;
-                          },
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        SizedBox(height: 20),
-                        TextField(
-                          maxLines: 4,
-                          controller: _alamatController,
-                          decoration: InputDecoration(
-                            errorText: _validateAlamat(_alamatController.text),
-                            labelText: 'Alamat Peminjam',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Nomor telepon penitip harus diisi';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      TextField(
+                        maxLines: 4,
+                        controller: _alamatController,
+                        decoration: InputDecoration(
+                          errorText: _validateAlamat(_alamatController.text),
+                          labelText: 'Alamat Penitip',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          controller: _namaBarangController,
-                          decoration: InputDecoration(
-                            labelText: 'Nama Barang yang di pinjam',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+                      ),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        controller: _namaBarangController,
+                        decoration: InputDecoration(
+                          labelText: 'Nama Barang',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Nama barang harus diisi';
-                            }
-                            return null;
-                          },
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          controller: _deskripsiBarangController,
-                          decoration: InputDecoration(
-                            labelText: 'Deskripsi Barang',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Nama barang harus diisi';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        controller: _deskripsiBarangController,
+                        decoration: InputDecoration(
+                          labelText: 'Deskripsi Barang',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        SizedBox(height: 20),
-                        Datepicker(
-                          controller: _tanggalPenitipanController,
-                          onDateSelected: (DateTime selectedDate) {
-                            _hitungBiayaPenitipan();
-                          },
-                        ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          enabled: false,
-                          controller: _durasiPenitipanController,
-                          decoration: InputDecoration(
-                            labelText: 'Durasi Penitipan',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+                      ),
+                      SizedBox(height: 20),
+                      Datepicker(
+                        controller: _tanggalPenitipanController,
+                        onDateSelected: (DateTime selectedDate) {
+                          _hitungBiayaPenitipan();
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        enabled: false,
+                        controller: _durasiPenitipanController,
+                        decoration: InputDecoration(
+                          labelText: 'Durasi Penitipan',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          enabled: false,
-                          controller: _biayaPenitipanController,
-                          decoration: InputDecoration(
-                            labelText: 'Biaya Penitipan',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+                      ),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        enabled: false,
+                        controller: _biayaPenitipanController,
+                        decoration: InputDecoration(
+                          labelText: 'Biaya Penitipan',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        Text('Untuk biaya peminjaman per hari adalah 30.0000'),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          controller: _instruksiKhususController,
-                          decoration: InputDecoration(
-                            labelText: 'Catatan Tambahan',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 16.0),
+                      ),
+                      Text('Untuk biaya penitipan per hari adalah 10.0000'),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        focusNode: _textFocus,
+                        controller: _instruksiKhususController,
+                        decoration: InputDecoration(
+                          labelText: 'Instruksi Khusus',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
-                        SizedBox(height: 100),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 100),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Row(
+            children: <Widget>[
+              CircularProgressIndicator(),
+              SizedBox(width: 20),
+              Text("Save data..."),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _hideLoadingDialog() {
+    if (Navigator.of(context, rootNavigator: true).canPop()) {
+      Navigator.of(context, rootNavigator: true).pop();
+    }
+  }
+
   @override
   void dispose() {
-    _namaController.text;
-    _nomorTeleponController.text;
-    _alamatController.text;
-    _namaBarangController.text;
-    _deskripsiBarangController.text;
-    _tanggalPenitipanController.text;
-    _durasiPenitipanController.text;
-    _biayaPenitipanController.text;
-    _instruksiKhususController.text;
     super.dispose();
   }
 }

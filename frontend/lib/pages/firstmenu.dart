@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:penitipan/components/Navigate.dart';
+import 'package:penitipan/components/NavigateUser.dart';
 import 'package:penitipan/pages/peminjaman/PeminjamanBarang.dart';
 import 'package:penitipan/pages/penitipan/PenitipanBarangForm.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FirstMenu extends StatefulWidget {
   const FirstMenu({super.key});
@@ -12,13 +14,34 @@ class FirstMenu extends StatefulWidget {
 
 class _FirstMenuState extends State<FirstMenu> {
   @override
+  String level = '';
+  String username = '';
+  Future<void> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    String level = prefs.getString("level").toString();
+    String username = prefs.getString("username").toString();
+    setState(() => this.level = level);
+  }
+
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(137, 137, 14, 218),
         onPressed: () {
-          Route route = MaterialPageRoute(builder: (context) => Navigate());
-          Navigator.push(context, route);
+          if (level == '1') {
+            print(level);
+            Route route = MaterialPageRoute(builder: (context) => Navigate());
+            Navigator.push(context, route);
+          } else {
+            Route route =
+                MaterialPageRoute(builder: (context) => NavigateUser());
+            Navigator.push(context, route);
+          }
         },
         child: Icon(
           Icons.home,

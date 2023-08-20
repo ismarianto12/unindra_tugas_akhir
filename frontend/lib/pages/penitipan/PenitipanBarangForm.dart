@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../components/Datepicker.dart';
+import '../../components/loading.dart';
 import '../../env.dart';
 
 class PenitipanBarangForm extends StatefulWidget {
@@ -12,11 +14,11 @@ class PenitipanBarangForm extends StatefulWidget {
 class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final FocusNode _textFocus = FocusNode();
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  String id_user = '';
+  String username = '';
+  bool loading = true;
 
   TextEditingController _namaController = TextEditingController();
   TextEditingController _nomorTeleponController = TextEditingController();
@@ -27,6 +29,21 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
   TextEditingController _durasiPenitipanController = TextEditingController();
   TextEditingController _biayaPenitipanController = TextEditingController();
   TextEditingController _instruksiKhususController = TextEditingController();
+
+  Future<void> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    String userid = prefs.getString("userid").toString();
+    String username = prefs.getString("username").toString();
+    _namaController.text = username.toUpperCase();
+    setState(() => {id_user = userid, username = username});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    getUsername();
+  }
 
   String? _validateAlamat(String? value) {
     if (value == '') {
@@ -53,7 +70,13 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
   }
 
   void _simpanData() async {
+    if (loading) {
+      _showLoadingDialog();
+    }
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        loading = true;
+      });
       var url = Uri.parse(API_URL + '/penitipan/simpan');
       var response = await http.post(url, body: {
         'nama': _namaController.text,
@@ -65,18 +88,34 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
         'durasiPenitipan': _durasiPenitipanController.text,
         'biayaPenitipan': _biayaPenitipanController.text,
         'instruksiKhusus': _instruksiKhususController.text,
+        'id_user': id_user
       });
       // print(response.body);
-      if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Data berhasil disimpan'),
+          content: Text('${id_user} ${response.body}'),
+        ),
+      );
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Data berhasil disimpan'),
+          ),
         );
         Navigator.pushNamed(context, '/penitipanlist');
       } else {
+        setState(() {
+          loading = false;
+        });
+        setState(() {
+          loading = false;
+        });
         SnackBar(
           content: Text('Gagal menyimpan data'),
         );
       }
+    } else {
+      _hideLoadingDialog();
     }
   }
 
@@ -144,7 +183,6 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text('Tambah Penitipan Barang'),
               Image.asset(
                 "assets/images/penitipan_image.png",
                 height: 200,
@@ -272,6 +310,7 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
                       Text('Untuk biaya penitipan per hari adalah 10.0000'),
                       SizedBox(height: 20),
                       TextFormField(
+                        focusNode: _textFocus,
                         controller: _instruksiKhususController,
                         decoration: InputDecoration(
                           labelText: 'Instruksi Khusus',
@@ -292,5 +331,34 @@ class _PenitipanBarangFormState extends State<PenitipanBarangForm> {
         ),
       ),
     );
+  }
+
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Row(
+            children: <Widget>[
+              CircularProgressIndicator(),
+              SizedBox(width: 20),
+              Text("Save data..."),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _hideLoadingDialog() {
+    if (Navigator.of(context, rootNavigator: true).canPop()) {
+      Navigator.of(context, rootNavigator: true).pop();
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

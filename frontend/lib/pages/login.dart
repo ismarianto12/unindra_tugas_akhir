@@ -71,10 +71,13 @@ class _LoginState extends State<Login> {
         Map<String, dynamic> data = json.decode(response.body);
         String token = data['token'];
         String levelid = data['level'].toString();
-        // print(levelid);
+        String username = data['username'].toString();
+        String userid = data['id'].toString();
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('storage', token);
         prefs.setString('level', levelid);
+        prefs.setString("username", username);
+        prefs.setString("userid", userid);
 
         if (levelid == "1") {
           Route route =
@@ -100,7 +103,12 @@ class _LoginState extends State<Login> {
         );
       }
     } else {
-      print('Form validation failed.');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Fom validation failed'),
+          // duration: Duration(seconds: 2),
+        ),
+      );
     }
   }
 
@@ -150,6 +158,7 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
+                            style: TextStyle(color: Colors.white),
                             controller: _usernameController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
@@ -168,9 +177,6 @@ class _LoginState extends State<Login> {
                               fillColor: Colors.white,
                               hintText: 'Username',
                               hintStyle: TextStyle(color: Colors.white),
-                              // border: OutlineInputBorder(
-                              //   borderSide: BorderSide(color: Colors.white),
-                              // ),
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -184,6 +190,7 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
+                            style: TextStyle(color: Colors.white),
                             controller: _passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
@@ -201,7 +208,9 @@ class _LoginState extends State<Login> {
                               ),
                               fillColor: Colors.white,
                               hintText: 'Password',
+
                               hintStyle: TextStyle(color: Colors.white),
+
                               // border: OutlineInputBorder(
                               //   borderSide: BorderSide(color: Colors.white),
                               // ),

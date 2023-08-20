@@ -16,6 +16,19 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  String username = '';
+
+  Future<void> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    String username = prefs.getString("username").toString();
+    setState(() => this.username = username);
+  }
+
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +42,11 @@ class _DashboardState extends State<Dashboard> {
                 bottomLeft: Radius.circular(35.0),
                 bottomRight: Radius.circular(35.0),
               ),
-              color: Color.fromARGB(255, 5, 123, 219),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Colors.blue, Colors.purple],
+              ),
             ),
             padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
             child: Row(
@@ -56,7 +73,7 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Hy Alex",
+                                  "Hy : " + this.username.toUpperCase(),
                                   style: TextStyle(
                                     color: const Color.fromARGB(
                                         255, 255, 255, 255),
@@ -99,7 +116,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                   ],
                 ),
                 // SizedBox(height: 30),
@@ -278,7 +295,7 @@ class _DashboardState extends State<Dashboard> {
                   width: 40,
                 ),
                 Text(
-                  "TOTAL PENDAPATAN",
+                  "TOTAL PENDAPATAN BULAN INI ",
                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -291,7 +308,7 @@ class _DashboardState extends State<Dashboard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ExerciseTile(
-                  color: Colors.blueAccent,
+                  color: Color.fromARGB(255, 219, 160, 11),
                   title: Text("Pendapatan Peminjaman"),
                   subtitle: Text("12.0000"),
                 ),

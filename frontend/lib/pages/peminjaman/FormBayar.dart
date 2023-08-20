@@ -1,45 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import '../../env.dart';
+import 'dart:convert';
+import 'dart:io';
 
-import '../../service/service.dart';
+class FormBayar extends StatefulWidget {
+  final String Data;
 
-class Returpinjam extends StatefulWidget {
-  const Returpinjam({super.key});
+  FormBayar(this.Data);
 
   @override
-  State<Returpinjam> createState() => _ReturpinjamState();
+  State<FormBayar> createState() => _FormBayarState();
 }
 
-class _ReturpinjamState extends State<Returpinjam>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  @override
-  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  final _nomortransaksiController = TextEditingController();
+class _FormBayarState extends State<FormBayar> {
+  final _konfirmasiPassword = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _npwpdController = TextEditingController();
+  final _globalKey = GlobalKey<FormState>();
+  void _submitForm() async {
+    if (_globalKey.currentState!.validate()) {
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      String getlisusername = pref.getString('username').toString();
 
-  bool loaded = false;
-  final List<dynamic> data = [];
+      if (_konfirmasiPassword.text != _passwordController.text) {
+        //create data
+        final snackBar = SnackBar(
+          content: Text('Silahkan Cek Password Tidak sama'),
+          duration: Duration(
+              seconds:
+                  3), // Optional: Control how long the Snackbar will be displayed
+          action: SnackBarAction(
+            label: 'Close',
+            onPressed: () {
+              // Do something when the user clicks the action button (e.g., undo)
+            },
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        var url = Uri.parse(API_URL + "/FormBayar");
+        final response = await http.post(url, body: {
+          'userid': getlisusername
+        }, headers: {
+          "Content-Type": "application/json",
+        });
+        // print("response : ${response}");
+        if (response.statusCode == 200) {
+        } else {
+          // Material
+          final snackBar = SnackBar(
+            content: Text('Gagal'),
+            duration: Duration(
+                seconds:
+                    3), // Optional: Control how long the Snackbar will be displayed
+            action: SnackBarAction(
+              label: 'Close',
+              onPressed: () {
+                // Do something when the user clicks the action button (e.g., undo)
+              },
+            ),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
+      }
+    }
+  }
 
-  void _search() {
+  Future<List<dynamic>> getFormBayar() async {
+    final List<dynamic> data = [];
+    return data;
+  }
+
+  String getusername = '';
+  String getpajakname = '';
+  Future<String?> _username() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String getlisusername = pref.getString('username').toString();
+    String getpajakname = pref.getString('pajakname').toString();
+
+    _npwpdController.text = getlisusername;
+
     setState(() {
-      loaded = true;
+      getusername = getlisusername;
+      getpajakname = getpajakname;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    final transactiondata = _nomortransaksiController.text;
-    // final getDetail = Service.returnPinjam(transactiondata);
-    // setState(() {
-    //   // data = getDetail;
-    // });
-    _controller = AnimationController(vsync: this);
+    _username();
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  _cancel() {
+    _konfirmasiPassword.text = '';
+    _passwordController.text = '';
+    _emailController.text = '';
   }
 
   @override
@@ -65,6 +124,28 @@ class _ReturpinjamState extends State<Returpinjam>
                       ),
                     ),
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          size: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "Bayar Peminjaman",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.0),
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * 0.16),
@@ -84,32 +165,20 @@ class _ReturpinjamState extends State<Returpinjam>
                             SizedBox(
                               height: 20.0,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Edit Password",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 25.0),
-                                ),
-                              ],
-                            ),
                             SizedBox(
                               height: 20.0,
                             ),
                             Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: Form(
-                                // key: _globalKey,
+                                key: _globalKey,
                                 child:
                                     // TextEditingController(text: )
                                     Column(
                                   children: [
                                     TextFormField(
                                       enabled: false,
-                                      // controller: _npwpdController,
+                                      controller: _npwpdController,
                                       // disab
                                       decoration: InputDecoration(
                                         labelText: 'NPWPD',
@@ -167,7 +236,7 @@ class _ReturpinjamState extends State<Returpinjam>
                                       ),
                                       validator: (value) {
                                         if (value!.isEmpty) {
-                                          return 'Please enter your password';
+                                          return 'Bayar';
                                         }
                                         return null;
                                       },
@@ -175,7 +244,7 @@ class _ReturpinjamState extends State<Returpinjam>
                                     SizedBox(height: 15),
                                     SizedBox(height: 15),
                                     TextFormField(
-                                      // controller: _passwordController,
+                                      controller: _passwordController,
                                       obscureText: true,
                                       //
                                       decoration: InputDecoration(
@@ -222,7 +291,7 @@ class _ReturpinjamState extends State<Returpinjam>
                                           139,
                                           139,
                                         ),
-                                        hintText: 'Password',
+                                        hintText: 'Jumlah Bayar',
                                         hintStyle: TextStyle(
                                           color: const Color.fromARGB(
                                             255,
@@ -234,14 +303,14 @@ class _ReturpinjamState extends State<Returpinjam>
                                       ),
                                       validator: (value) {
                                         if (value!.isEmpty) {
-                                          return 'Please enter your password';
+                                          return 'Silahkan Masukan Jumlah Bayar';
                                         }
                                         return null;
                                       },
                                     ),
                                     SizedBox(height: 15),
                                     TextFormField(
-                                      // controller: _konfirmasiPassword,
+                                      controller: _konfirmasiPassword,
                                       obscureText: true,
                                       decoration: InputDecoration(
                                         labelText: 'Password',
@@ -305,6 +374,44 @@ class _ReturpinjamState extends State<Returpinjam>
                                       },
                                     ),
                                     SizedBox(height: 35),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.99,
+                                      height: 35,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                  20.0), // Adjust the radius as needed
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              MaterialStateColor.resolveWith(
+                                            (states) {
+                                              if (states.contains(
+                                                  MaterialState.pressed)) {
+                                                return Colors
+                                                    .red; // Color when the button is pressed.
+                                              }
+                                              return Color.fromARGB(
+                                                  255,
+                                                  20,
+                                                  215,
+                                                  88); // Default color for the button.
+                                            },
+                                          ),
+                                        ),
+                                        onPressed: () => _submitForm(),
+                                        child: Text('Upload File',
+                                            style:
+                                                TextStyle(color: Colors.white)),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                     Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
@@ -342,7 +449,7 @@ class _ReturpinjamState extends State<Returpinjam>
                                                 },
                                               ),
                                             ),
-                                            onPressed: () => null,
+                                            onPressed: () => _submitForm(),
                                             child: Text('Simpan',
                                                 style: TextStyle(
                                                     color: Colors.white)),
@@ -384,7 +491,7 @@ class _ReturpinjamState extends State<Returpinjam>
                                                   },
                                                 ),
                                               ),
-                                              onPressed: () => null,
+                                              onPressed: () => _cancel(),
                                               child: Text('Batal',
                                                   style: TextStyle(
                                                       color: Colors.white))),

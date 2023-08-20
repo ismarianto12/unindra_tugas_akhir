@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:penitipan/pages/login.dart';
 
 import '../service/service.dart';
 
@@ -12,21 +13,61 @@ class Daftar extends StatefulWidget {
 class _DaftarState extends State<Daftar> {
   final _fomKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  late BuildContext dialogContext;
 //
+  final _emailController = TextEditingController();
   final _usernameController = TextEditingController();
   final _nameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _passworulangdController = TextEditingController();
+
   final token = '';
-  final bool _loading = false;
+  bool _loading = false;
   void _simpanData() {
-    final response = Service.userDaftar(
-        token,
-        _nameController.text,
-        _passwordController.text,
-        _passwordController.text,
-        _passwordController.text);
-    if (response != null && !_loading) {
-    } else {}
+    if (_fomKey.currentState!.validate()) {
+      if (_passwordController.text != _passworulangdController.text) {
+        setState(() {
+          _loading = true;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: const Text('Gagal Password tidak sama'),
+          ),
+        );
+      } else {
+        var response = Service.userDaftar(
+            token,
+            _emailController.text,
+            _nameController.text,
+            _usernameController.text,
+            _passwordController.text,
+            _passworulangdController.text);
+
+        if (response != null) {
+          _showLoadingDialog();
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: const Text('Data berahasil di daftarkan Silahkan Login'),
+            ),
+          );
+          Route route = MaterialPageRoute(builder: (context) => Login());
+          Navigator.push(context, route);
+        } else {}
+      }
+    } else {
+      setState(() {
+        _loading = false;
+      });
+      _hideLoadingDialog();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Silhkan isi semua form !!'),
+          // duration: Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
   @override
@@ -37,7 +78,11 @@ class _DaftarState extends State<Daftar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daftar Penitipan dan Peminjaman'),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Daftar Penitipan dan Peminjaman',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -55,9 +100,29 @@ class _DaftarState extends State<Daftar> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        labelText: 'Email ',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 12.0, horizontal: 16.0),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Email penitip harus diisi';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
                       controller: _usernameController,
                       decoration: InputDecoration(
-                        labelText: 'Email',
+                        labelText: 'Username ',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -75,7 +140,7 @@ class _DaftarState extends State<Daftar> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      controller: _usernameController,
+                      controller: _nameController,
                       decoration: InputDecoration(
                         labelText: 'Nama',
                         border: OutlineInputBorder(
@@ -91,11 +156,12 @@ class _DaftarState extends State<Daftar> {
                         return null;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
                     TextFormField(
-                      controller: _usernameController,
+                      controller: _passwordController,
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: 'Password',
                         border: OutlineInputBorder(
@@ -106,7 +172,7 @@ class _DaftarState extends State<Daftar> {
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Nama penitip harus diisi';
+                          return 'Pasword Wajib diisi';
                         }
                         return null;
                       },
@@ -115,7 +181,9 @@ class _DaftarState extends State<Daftar> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      controller: _usernameController,
+                      // ke
+                      obscureText: true,
+                      controller: _passworulangdController,
                       decoration: InputDecoration(
                         labelText: 'Ulangi Password',
                         border: OutlineInputBorder(
@@ -126,7 +194,7 @@ class _DaftarState extends State<Daftar> {
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Nama penitip harus diisi';
+                          return 'Password Wajib diisi';
                         }
                         return null;
                       },
@@ -182,8 +250,8 @@ class _DaftarState extends State<Daftar> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.save,
+                              const Icon(
+                                Icons.refresh_rounded,
                                 color: Colors.white,
                               ),
                               SizedBox(width: 20),
@@ -205,6 +273,30 @@ class _DaftarState extends State<Daftar> {
         ),
       )),
     );
+  }
+
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Row(
+            children: <Widget>[
+              CircularProgressIndicator(),
+              SizedBox(width: 20),
+              Text("Loading..."),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _hideLoadingDialog() {
+    if (Navigator.of(dialogContext, rootNavigator: true).canPop()) {
+      Navigator.of(dialogContext, rootNavigator: true).pop();
+    }
   }
 
   @override
